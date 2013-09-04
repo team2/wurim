@@ -1,0 +1,2 @@
+cd src
+coffee -o ../upload/js/compiled -cw .
