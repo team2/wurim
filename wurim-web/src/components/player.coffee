@@ -2,6 +2,7 @@ Crafty.c "Player",
     init: ->
         @requires "2D, Canvas, Color, Collision, Fourway"
         @attr {x: 100, y:100, w:20, h:20}
+        @origin "center"
         @color "rgb(255, 0, 0)"
         @bind 'Moved', @stopOnBorder
         @bind 'KeyDown', @fire
@@ -14,5 +15,5 @@ Crafty.c "Player",
 
     fire: (e) ->
         if e.key == Crafty.keys.SPACE
-            bullet = Crafty.e 'Bullet'
-            bullet.place @x, @y
+            bullet = Crafty.e 'BasicBullet'
+            bullet.place @x + @w / 2, @y
