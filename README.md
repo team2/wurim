@@ -6,5 +6,5 @@ wu rim
 
 == setup step
 
-$ npm install
-$ grunt server
+  $ npm install
+  $ grunt server
