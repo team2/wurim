@@ -29,14 +29,23 @@
         // Player A
         bullet = Crafty.e('PlayerInitBullet');
         Crafty.audio.play('biu');
-        return bullet.fireAt(this.x, this.y);
+        bullet.fireAt(this.x, this.y);
       } else if (e.key === Crafty.keys.C) {
         // Player B
         bullet = Crafty.e('PlayerInitBullet');
         Crafty.audio.play('biu');
-        return bullet.fireAt(this.x + this.w - bullet.w, this.y);
-      } else if (e.key === Crafty.keys.F) {
-        Crafty.e('Boom');
+        bullet.fireAt(this.x + this.w - bullet.w, this.y);
+      } else if (
+          (e.key === Crafty.keys.F || e.key == Crafty.keys.G) &&
+          !this.in_boom) {
+        var cd = Crafty.e('BoomCountdown');
+        var self = this;
+        cd.setKey(e.key == Crafty.keys.F ? Crafty.keys.G : Crafty.keys.F);
+        cd.bind('Remove', function() {
+          console.log('!!!');
+          self.in_boom = false
+        });
+        self.in_boom = true;
       }
     },
 
