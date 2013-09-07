@@ -1,7 +1,7 @@
 (function () {
   window.app = window.app || {}
   app.players = {
-    a: false,
+    a: true,
     b: false,
   }
   app.ensureGame = function () {
@@ -11,6 +11,9 @@
   }
 
   var socket = io.connect('http://wurim.thbattle.net:9001');
+  socket.on('tilt', function (e) {
+    Crafty.trigger('tilt', e)
+  })
   socket.on('player:ok', function (player) {
     $('.player-' + player).html('玩家' + player + '已连接！' )
     app.players[player] = true
@@ -36,5 +39,5 @@
     emit(e)
   })
 
-  Game.start()
+  // Game.start()
 })()

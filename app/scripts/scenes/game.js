@@ -5,11 +5,11 @@ Crafty.scene('Game', function(){
   Crafty.audio.play("boss_background02.mp3",-1, 1.0);
 
 
-  Crafty.e('Player').fourway(8);
+  var p = Crafty.e('Player')
 
   Crafty.e('Health');
 
-  addCannonFodders = function() {
+  var addCannonFodders = function() {
     var u;
     if (Math.random() < 0.02) {
       u = Crafty.e("Goblin");

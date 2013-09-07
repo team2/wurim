@@ -7,5 +7,8 @@ module.exports = function(io) {
     socket.on('key', function (e) {
       socket.broadcast.emit('key', e)
     })
+    socket.on('tilt', function (e) {
+      socket.broadcast.emit('tilt', e)
+    })
   })
 }
