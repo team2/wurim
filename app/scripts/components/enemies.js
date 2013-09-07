@@ -106,7 +106,8 @@
       this.requires("Enemy");
       this.attr({
         hp: 2500,
-        speed: 1,
+        x_speed: 1,
+        y_speed: 1,
         w: 100,
         h: 100
       });
@@ -114,10 +115,14 @@
     },
 
     moving: function() {
-      if (this.y > WINDOW_HEIGHT) {
-        this.destroy();
+      if ((this.x < 0 && this.x_speed < 0) || (this.x >= WINDOW_WIDTH - this.w && this.x_speed > 0)) {
+        this.x_speed = -this.x_speed;
       }
-      return this.y += this.speed;
+      if ((this.y < 0 && this.y_speed < 0) || (this.y >= WINDOW_HEIGHT - this.h * 4 && this.y_speed > 0)) {
+        this.y_speed = -this.y_speed;
+      }
+      this.x += this.x_speed;
+      this.y += this.y_speed;
     }
   });
 
