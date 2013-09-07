@@ -1,6 +1,7 @@
 Crafty.scene('Loading', function(){
   Crafty.load([
     "/assets/images/bg/bg-1.png",
+    "/assets/images/robot/player.png",
     "/assets/images/welcome.png",
     "/assets/images/health/health.png",
     "/assets/sounds/alt_attack01.ogg",
@@ -16,21 +17,34 @@ Crafty.scene('Loading', function(){
       Crafty.audio.add('biu', '/assets/sounds/g_biu.m4a');
       Crafty.audio.add('tu', '/assets/sounds/g_tu.m4a');
 
-      Crafty.sprite('/assets/images/health/health.png',
-        {health: [0, 0, 50, 50]});
+        Crafty.sprite('/assets/images/robot/player.png',
+          {player: [0, 0, 96, 108]});
 
-      Crafty.e('2D, DOM, Image, Mouse, Keyboard')
-        .attr({ w: Game.width, h: Game.height})
-        .image('/assets/images/welcome.png')
-        .bind('Click', function(){
-          console.log('haha');
-          Crafty.scene('Game');
-          this.destroy();
-      }).bind('KeyDown', function(){
-          console.log('haha');
-          Crafty.scene('Game');
-          this.destroy();
-      })
+        Crafty.sprite('/assets/images/monster/monster-2.png',
+          {monster1: [0, 0, 48, 60]});
+
+        Crafty.sprite('/assets/images/monster/monster-3.png',
+          {monster2: [0, 0, 36, 48]});
+
+        Crafty.sprite('/assets/images/monster/monster-4.png',
+          {monster3: [0, 0, 70, 60]});
+
+        Crafty.sprite('/assets/images/bullet/bullet-2.png',
+          {bullet2: [0, 0, 12, 36]});
+
+        Crafty.sprite('/assets/images/bullet/bullet-3.png',
+          {bullet3: [0, 0, 12, 36]});
+
+        Crafty.e('2D, DOM, Image, Mouse, Keyboard')
+          .attr({ w: Game.width, h: Game.height})
+          .image('/assets/images/welcome.png')
+          .bind('Click', function(){
+            Crafty.scene('Game');
+            this.destroy();
+        }).bind('KeyDown', function(){
+            Crafty.scene('Game');
+            this.destroy();
+        })
     }
   )
 })

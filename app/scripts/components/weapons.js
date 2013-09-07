@@ -2,7 +2,7 @@
 // Weapons are divided into two categories: Bullet and Extreme.
 Crafty.c('Weapon', {
   init: function() {
-    this.requires("2D, Canvas, Collision");
+    this.requires("2D, DOM, Collision");
     this.attr({
       damage: 10
     });
@@ -52,15 +52,21 @@ Crafty.c('PlayerBullet', {
 });
 
 
-Crafty.c('PlayerInitBullet', {
+Crafty.c('PlayerInitBulletLeft', {
   init: function() {
-    this.requires('PlayerBullet, Color');
+    this.requires('PlayerBullet, bullet2');
     this.attr({
       damage: 10,
-      w: 5,
-      h: 10
     });
-    this.color('#46D898');
+  },
+});
+
+Crafty.c('PlayerInitBulletRight', {
+  init: function() {
+    this.requires('PlayerBullet, bullet3');
+    this.attr({
+      damage: 10,
+    });
   },
 });
 

@@ -1,19 +1,17 @@
 (function() {
   Crafty.c("Player", {
     init: function() {
-      this.requires("Character, Fourway");
+      this.requires("2D, DOM, player, Fourway, SpriteAnimation, Collision");
       this.attr({
         hp: 30,
         x: WINDOW_WIDTH / 2 - 20,
         y: WINDOW_HEIGHT - 20,
-        w: 20,
-        h: 20,
         damage: 10
       });
       this.origin("center");
-      this.color("rgb(255, 0, 0)");
       this.bind('Moved', this.stopOnBorder);
       this.bind('KeyDown', this.fire);
+      this.reset();
     },
 
     stopOnBorder: function() {
@@ -31,14 +29,13 @@
       var bullet;
       if (e.key === Crafty.keys.X) {
         // Player A
-        bullet = Crafty.e('PlayerInitBullet');
-        // Crafty.audio.play('biu');
+        bullet = Crafty.e('PlayerInitBulletLeft');
         this.biu();
         bullet.fireAt(this.x, this.y);
       } else if (e.key === Crafty.keys.C) {
         // Player B
-        bullet = Crafty.e('PlayerInitBullet');
-        this.tu();
+        bullet = Crafty.e('PlayerInitBulletRight');
+        this.tu()
         bullet.fireAt(this.x + this.w - bullet.w, this.y);
       } else if (
           (e.key === Crafty.keys.F || e.key == Crafty.keys.G) &&

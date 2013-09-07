@@ -31,8 +31,7 @@ Crafty.scene('Game', function(){
     return addCannonFodders.call(this);
   });
 
-  Crafty.bind('KillPlayer', function(){
-    this.destroy();
+  this.bind('KillPlayer', function(){
     Crafty.scene('GameOver');
   })
   Crafty.bind('KeyDown', function(e){
