@@ -25,7 +25,7 @@
     fire: function(e) {
       var bullet;
       if (e.key === Crafty.keys.SPACE) {
-        bullet = Crafty.e('BasicBullet');
+        bullet = Crafty.e('PlayerInitBullet');
         return bullet.place(this.x + this.w / 2, this.y);
       }
     }
