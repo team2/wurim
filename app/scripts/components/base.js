@@ -17,7 +17,27 @@ Crafty.c('Actor', {
 });
 
 Crafty.c('Health', {
-    init: function() {
-        this.requires('Actor, health');
-    },
+  _padding: 5,
+  _margin: 40,
+  default_health: 3,
+  init: function() {
+    this.healths = []
+    for(var i = 0; i != this.default_health; ++i){
+      this.healths.push(Crafty.e('Actor, health').at(this._padding + i * this._margin, this._padding));
+    }
+    this._health_cursor = this.default_health - 1;
+    this.bind('HealPlayer', function(){
+      if(this._health_cursor == this.default_health - 1){
+        return
+      }
+      this.healths[this._health_cursor++].visible = true;
+    });
+    this.bind('HurtPlayer', function(){
+      if(!this._health_cursor){
+        return;
+      }else{
+        this.healths[this._health_cursor--].visible = false;
+      }
+    })
+  }
 })

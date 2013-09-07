@@ -18,24 +18,17 @@
       });
     },
 
-    moving: function() {
-      if (this.y > WINDOW_HEIGHT) {
-        this.destroy();
-      }
-      return this.y += this.speed;
-    },
-
     hurt: function(damage) {
       this.hp -= damage;
       if (this.hp <= 0) {
-        this.trigger('KillEnemy');
-        return this.destroy();
+        Crafty.trigger('KillEnemy');
+        this.destroy();
       }
     },
 
     onDamage: function(event) {
       var bullet = event[0].obj;
-      this.trigger('HurtEnemy', bullet.damage);
+      Crafty.trigger('HurtEnemy', bullet.damage);
       bullet.destroy();
     }
   });
@@ -45,11 +38,38 @@
       this.requires("Enemy");
       this.attr({
         hp: 20,
-        speed: 1,
+        speed: 3,
         w: 30,
         h: 30
       });
       return this.color("#66ccff");
+    },
+
+    moving: function() {
+      if (this.y > WINDOW_HEIGHT) {
+        this.destroy();
+      }
+      return this.y += this.speed;
+    }
+  });
+
+  Crafty.c("Boss1", {
+    init: function() {
+      this.requires("Enemy");
+      this.attr({
+        hp: 2500,
+        speed: 1,
+        w: 100,
+        h: 100
+      });
+      return this.color("#66ccff");
+    },
+
+    moving: function() {
+      if (this.y > WINDOW_HEIGHT) {
+        this.destroy();
+      }
+      return this.y += this.speed;
     }
   });
 

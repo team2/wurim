@@ -61,16 +61,15 @@ Crafty.c('Extreme', {
 
 Crafty.c('Boom', {
   init: function() {
-    this.requires("Extreme, Colors");
-    this.attr({w:50, h:50});
+    this.requires("Extreme, Color");
+    this.attr({w: 50, h: 50, x: 100, y: 100});
     this.color('#cccccc');
     var total_damage = 100;
     this.bind("EnterFrame", function() {
-      var enemies = Crafty('Enemy');
-      var dmg = Math.min(10, total_damage);
-      for(i = 0; i < enemies.length; i++) {
-        enemies[i].damage(dmg);
-      }
+      var dmg = Math.min(2, total_damage);
+      Crafty('Enemy').each(function() {
+        this.hurt(dmg);
+      });
       total_damage -= dmg;
       if(total_damage <= 0) {
         this.destroy();
