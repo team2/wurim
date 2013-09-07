@@ -1,7 +1,7 @@
 (function() {
   Crafty.c("Enemy", {
     init: function() {
-      this.requires("Character");
+      this.requires("2D, DOM, Collision");
       this.attr({
         damage: 10
       });
@@ -38,15 +38,15 @@
 
   Crafty.c("Goblin", {
     init: function() {
-      this.requires("Enemy");
+      this.requires("Enemy, monster2");
       this.attr({
         direction: 0,
         hp: 10,
         speed: 3,
-        w: 30,
-        h: 30
+        //w: 30,
+        //h: 30
       });
-      return this.color("#66ccff");
+      return this
     },
 
     beforeDestory: function() {
@@ -67,14 +67,14 @@
 
   Crafty.c("Slime", {
     init: function() {
-      this.requires("Enemy");
+      this.requires("Enemy, monster1");
       this.attr({
         hp: 10,
         speed: 2,
-        w: 50,
-        h: 50
+        //w: 50,
+        //h: 50
       });
-      return this.color('#324311');
+      return this
     },
 
     moving: function() {
@@ -96,14 +96,14 @@
 
   Crafty.c("Orc", {
     init: function() {
-      this.requires("Enemy");
+      this.requires("Enemy, monster3");
       this.attr({
         hp: 100,
         speed: 2,
-        w: 50,
-        h: 50
+        //w: 50,
+        //h: 50
       });
-      return this.color('#224991');
+      return this;
     },
 
     beforeDestory: function() {
@@ -127,7 +127,7 @@
         w: 100,
         h: 100
       });
-      return this.color("#66ccff");
+      return this;
     },
     
     beforeDestory: function() {
