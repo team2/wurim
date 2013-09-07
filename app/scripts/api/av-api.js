@@ -3,7 +3,9 @@
     
     var GameScore = AV.Object.extend("GameScore");
     
-    global.avAddGameScore = function(score, p1Name, p2Name, callback) {
+    api = global.api || {}
+
+    api.addGameScore = function(score, p1Name, p2Name, callback) {
         var gameScore = new GameScore();
         gameScore.set("score", score);
         gameScore.set("p1Name", p1Name);
@@ -20,7 +22,7 @@
         });
     };
 
-    global.avGetGameScores = function(callback) {
+    api.getGameScores = function(callback) {
         var query = new AV.Query(GameScore);
         query.descending("score");
         query.limit(10);

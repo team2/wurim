@@ -4,17 +4,16 @@
       this.requires("Character, Fourway");
       this.attr({
         hp: 30,
-        x: 100,
-        y: 100,
+        x: WINDOW_WIDTH / 2 - 20,
+        y: WINDOW_HEIGHT - 20,
         w: 20,
-        h: 20
+        h: 20,
+        damage: 10
       });
       this.origin("center");
       this.color("rgb(255, 0, 0)");
       this.bind('Moved', this.stopOnBorder);
       this.bind('KeyDown', this.fire);
-      this.bind('HurtPlayer', this.hurt);
-      this.onHit('Enemy', this.onDamage);
     },
 
     stopOnBorder: function() {
@@ -29,10 +28,12 @@
       if (e.key === Crafty.keys.X) {
         // Player A
         bullet = Crafty.e('PlayerInitBullet');
+        Crafty.audio.play('biu');
         bullet.fireAt(this.x, this.y);
       } else if (e.key === Crafty.keys.C) {
         // Player B
         bullet = Crafty.e('PlayerInitBullet');
+        Crafty.audio.play('biu');
         bullet.fireAt(this.x + this.w - bullet.w, this.y);
       } else if (
           (e.key === Crafty.keys.F || e.key == Crafty.keys.G) &&
@@ -50,17 +51,12 @@
 
     hurt: function(damage) {
       this.hp -= damage;
+      Crafty.trigger('HurtPlayer', this);
       if (this.hp <= 0) {
-        this.trigger('KillPlayer');
+        Crafty.trigger('KillPlayer', this);
         return this.destroy();
       }
     },
-
-    onDamage: function(event) {
-      var enemy = event[0].obj;
-      this.trigger('HurtPlayer', enemy.damage);
-      enemy.destroy();
-    }
   });
 
 }).call(this);

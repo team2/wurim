@@ -33,7 +33,7 @@ Crafty.c('Health', {
       this.healths[this._health_cursor++].visible = true;
     });
     this.bind('HurtPlayer', function(){
-      if(!this._health_cursor){
+      if(this._health_cursor == -1){
         return;
       }else{
         this.healths[this._health_cursor--].visible = false;
