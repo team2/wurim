@@ -18,17 +18,26 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <div class="landing">
+            <h1 class="title">环五道口</h1>
+            <h2 class="sub-title">WU RIM</h2>
+            <div>
+                <div class="qr player-a" >
+                    <img src="/images/player-a.png">
+                    <!-- 玩家 a 已连接！ -->
+                </div>
+                <div class="qr player-b">
+                    <img src="/images/player-b.png">
+                </div>
+            </div>
+        </div>
         <div id="cr-stage"></div>
-
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="scripts/vendor/crafty.js"></script>
+        <script src="scripts/vendor/socket.io.min.js"></script>
         <!-- endbower -->
-        <!-- endbuild -->
-
-        <!-- build:js scripts/main.js -->
-        <!-- <script src="scripts/main.js"></script> -->
         <!-- endbuild -->
 
         <!-- build:js(.tmp) scripts/coffee.js -->
@@ -38,7 +47,8 @@
         <script type="text/javascript" src="scripts/components/misc.js"></script>
         <script type="text/javascript" src="scripts/components/player.js"></script>
         <script type="text/javascript" src="scripts/scenes/game.js"></script>
-        <script type="text/javascript" src="scripts/entry.js"></script>
+        <script type="text/javascript" src="scripts/game-entry.js"></script>
+        <script type="text/javascript" src="scripts/app.js"></script>
         <!-- endbuild -->
 </body>
 </html>
