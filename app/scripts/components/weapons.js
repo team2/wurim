@@ -28,3 +28,26 @@ Crafty.c('Extreme', {
         this.requires('Weapon');
     };
 });
+
+//  --------------------------------------
+// The extreme
+
+Crafty.c('TheExtreme', {
+  init: function() {
+    this.requires("Extreme, Colors");
+    this.attr({w:50, h:50});
+    this.color('#cccccc');
+    var total_damage = 100;
+    this.bind("EnterFrame", function() {
+      var enemies = Crafty('Enemy');
+      var dmg = Math.min(10, total_damage);
+      for(i = 0; i < enemies.length; i++) {
+        enemies[i].damage(dmg);
+      }
+      total_damage -= dmg;
+      if(total_damage <= 0) {
+        this.destroy();
+      }
+    });
+  };
+});
