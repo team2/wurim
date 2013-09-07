@@ -13,22 +13,24 @@ Crafty.scene('Loading', function(){
     "/assets/sounds/supply.wav"], 
 
     function(){
-      Crafty.audio.add('biu', '/assets/sounds/biubiubiu.wav')
-        Crafty.sprite('/assets/images/health/health.png',
-          {health: [0, 0, 50, 50]});
+      Crafty.audio.add('biu', '/assets/sounds/g_biu.m4a');
+      Crafty.audio.add('tu', '/assets/sounds/g_tu.m4a');
 
-        Crafty.e('2D, DOM, Image, Mouse, Keyboard')
-          .attr({ w: Game.width, h: Game.height})
-          .image('/assets/images/welcome.png')
-          .bind('Click', function(){
-            console.log('haha');
-            Crafty.scene('Game');
-            this.destroy();
-        }).bind('KeyDown', function(){
-            console.log('haha');
-            Crafty.scene('Game');
-            this.destroy();
-        })
+      Crafty.sprite('/assets/images/health/health.png',
+        {health: [0, 0, 50, 50]});
+
+      Crafty.e('2D, DOM, Image, Mouse, Keyboard')
+        .attr({ w: Game.width, h: Game.height})
+        .image('/assets/images/welcome.png')
+        .bind('Click', function(){
+          console.log('haha');
+          Crafty.scene('Game');
+          this.destroy();
+      }).bind('KeyDown', function(){
+          console.log('haha');
+          Crafty.scene('Game');
+          this.destroy();
+      })
     }
   )
 })

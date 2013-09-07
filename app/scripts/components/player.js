@@ -23,17 +23,22 @@
       return this.y = this.y > WINDOW_HEIGHT - this.h ? WINDOW_HEIGHT - this.h : this.y;
     },
 
+    biu: _.throttle(function() {Crafty.audio.play("biu");}, 500),
+
+    tu: _.throttle(function() {Crafty.audio.play("tu");}, 500),
+
     fire: function(e) {
       var bullet;
       if (e.key === Crafty.keys.X) {
         // Player A
         bullet = Crafty.e('PlayerInitBullet');
-        Crafty.audio.play('biu');
+        // Crafty.audio.play('biu');
+        this.biu();
         bullet.fireAt(this.x, this.y);
       } else if (e.key === Crafty.keys.C) {
         // Player B
         bullet = Crafty.e('PlayerInitBullet');
-        Crafty.audio.play('biu');
+        this.tu();
         bullet.fireAt(this.x + this.w - bullet.w, this.y);
       } else if (
           (e.key === Crafty.keys.F || e.key == Crafty.keys.G) &&
