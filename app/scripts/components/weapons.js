@@ -26,8 +26,8 @@ Crafty.c('Bullet', {
     this.onHit('Enemy', this.onHitEnemy);
   },
   moving: function() {
-    if (this.y < 0 || this.y > Game.height()
-      || this.x < 0 || this.x > Game.width())  {
+    if (this.y < 0 || this.y > Game.height
+      || this.x < 0 || this.x > Game.width)  {
         this.destroy();
         return;
       }
