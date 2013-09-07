@@ -1,26 +1,28 @@
-(function() {
-  var addCannonFodders, interactions;
+Crafty.scene('Game', function(){
 
-  interactions = function() {
-    return 1;
-  };
+  Crafty.background("url(/assets/images/bg/bg-1.png)");
+
+  Crafty.audio.play("boss_background02.mp3",-1, 1.0);
+
+
+  Crafty.e('Player').fourway(8);
+
+  Crafty.e('Health');
 
   addCannonFodders = function() {
     var u;
-    if (Math.random() < 0.01) {
+    if (Math.random() < 0.02) {
       u = Crafty.e("Slime");
-      return u.place(Math.random() * WINDOW_WIDTH);
+      u.place(Math.random() * (WINDOW_WIDTH - u.w));
+    } else if (Math.random() < 0.01) {
+      u = Crafty.e("Boss1");
+      u.place(Math.random() * (WINDOW_WIDTH - u.w));
     }
   };
 
-  Crafty.scene('game', function() {
-    Crafty.e('Player').fourway(8);
-    return this.bind("EnterFrame", function() {
-      interactions.call(this);
-      return addCannonFodders.call(this);
-    });
-  }, function() {
-    return 1;
+  Crafty.bind("EnterFrame",function(frame){
+      //Setup Background position
+    Crafty.stage.elem.style.backgroundPosition ="0px "+frame.frame+"px";
+    return addCannonFodders.call(this);
   });
-
-}).call(this);
+});

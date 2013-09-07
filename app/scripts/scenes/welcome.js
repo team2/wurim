@@ -1,0 +1,2 @@
+Crafty.scene('Welcome', function(){
+});

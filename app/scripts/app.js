@@ -1,12 +1,12 @@
 (function () {
-
+  window.app = window.app || {}
   app.players = {
     a: false,
     b: false,
   }
   app.ensureGame = function () {
     if (app.players.a && app.players.b) {
-      app.startGame()
+      Game.start()
     }
   }
 
@@ -36,4 +36,5 @@
     emit(e)
   })
 
+  Game.start()
 })()

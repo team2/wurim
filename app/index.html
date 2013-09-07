@@ -33,22 +33,32 @@
         </div>
         <div id="cr-stage"></div>
         <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="scripts/vendor/crafty.js"></script>
         <script src="scripts/vendor/socket.io.min.js"></script>
+        <script src="scripts/api/av.js"></script>
+        <script src="scripts/api/av-api.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:js(.tmp) scripts/coffee.js -->
         <script type="text/javascript" src="scripts/constants.js"></script>
-        <script type="text/javascript" src="scripts/components/bullet.js"></script>
+        <script type="text/javascript" src="scripts/components/base.js"></script>
+        <script type="text/javascript" src="scripts/components/weapons.js"></script>
+        <script type="text/javascript" src="scripts/components/character.js"></script>
         <script type="text/javascript" src="scripts/components/enemies.js"></script>
         <script type="text/javascript" src="scripts/components/misc.js"></script>
         <script type="text/javascript" src="scripts/components/player.js"></script>
         <script type="text/javascript" src="scripts/scenes/game.js"></script>
-        <script type="text/javascript" src="scripts/game-entry.js"></script>
+        <script type="text/javascript" src="scripts/scenes/loading.js"></script>
+        <script type="text/javascript" src="scripts/entry.js"></script>
         <script type="text/javascript" src="scripts/app.js"></script>
         <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="cr-stage"></div>
 </body>
 </html>
