@@ -19,7 +19,7 @@ Crafty.scene('Game', function(){
     var u;
     if (Math.random() < 0.01) {
       u = Crafty.e("Slime");
-      return u.place(Math.random() * WINDOW_WIDTH);
+      return u.place(Math.random() * (WINDOW_WIDTH - u.w));
     }
   };
 });
