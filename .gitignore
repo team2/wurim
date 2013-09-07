@@ -4,3 +4,10 @@ dist
 .sass-cache
 app/bower_components
 .DS_Store
+
+# Vim
+*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
