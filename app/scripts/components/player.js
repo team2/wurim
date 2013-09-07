@@ -13,7 +13,7 @@
       this.color("rgb(255, 0, 0)");
       this.bind('Moved', this.stopOnBorder);
       this.bind('KeyDown', this.fire);
-      this.bind('HurtPlayer', this.damage);
+      this.bind('HurtPlayer', this.hurt);
       this.onHit('Enemy', this.onDamage);
     },
 
@@ -37,7 +37,7 @@
       }
     },
 
-    damage: function(damage) {
+    hurt: function(damage) {
       this.hp -= damage;
       if (this.hp <= 0) {
         this.trigger('KillPlayer');

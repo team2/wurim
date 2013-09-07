@@ -7,7 +7,7 @@
       });
       this.origin("center");
       this.bind("EnterFrame", this.moving);
-      this.bind('HurtEnemy', this.damage);
+      this.bind('HurtEnemy', this.hurt);
       this.onHit('Bullet', this.onDamage);
     },
 
@@ -25,19 +25,19 @@
       return this.y += this.speed;
     },
 
-    damage: function(damage) {
+    hurt: function(damage) {
       this.hp -= damage;
       if (this.hp <= 0) {
+        this.trigger('KillEnemy');
         return this.destroy();
       }
     },
 
     onDamage: function(event) {
       var bullet = event[0].obj;
-      console.log(bullet)
       this.trigger('HurtEnemy', bullet.damage);
       bullet.destroy();
-    },
+    }
   });
 
   Crafty.c("Slime", {
