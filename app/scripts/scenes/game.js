@@ -12,10 +12,13 @@ Crafty.scene('Game', function(){
   addCannonFodders = function() {
     var u;
     if (Math.random() < 0.02) {
+      u = Crafty.e("Goblin");
+      u.place(Math.random() * (WINDOW_WIDTH - u.w));
+    } else if (Math.random() < 0.005) {
       u = Crafty.e("Slime");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
-    } else if (Math.random() < 0.01) {
-      u = Crafty.e("Goblin");
+    } else if (Math.random() < 0.005) {
+      u = Crafty.e("Orc");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
     } else if (Math.random() < 0.001) {
       u = Crafty.e("Boss1");

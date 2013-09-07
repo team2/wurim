@@ -33,7 +33,7 @@
     }
   });
 
-  Crafty.c("Slime", {
+  Crafty.c("Goblin", {
     init: function() {
       this.requires("Enemy");
       this.attr({
@@ -53,7 +53,7 @@
     }
   });
 
-  Crafty.c("Goblin", {
+  Crafty.c("Slime", {
     init: function() {
       this.requires("Enemy");
       this.attr({
@@ -63,6 +63,34 @@
         h: 50
       });
       return this.color('#324311');
+    },
+
+    moving: function() {
+      if (this.y > WINDOW_HEIGHT) {
+        this.destroy();
+      }
+      return this.y += this.speed;
+    },
+
+    hurt: function(damage) {
+      this.hp -= damage;
+      if (this.hp <= 0) {
+        Crafty.trigger('KillEnemy');
+        this.destroy();
+      }
+    }
+  });
+
+  Crafty.c("Orc", {
+    init: function() {
+      this.requires("Enemy");
+      this.attr({
+        hp: 100,
+        speed: 2,
+        w: 50,
+        h: 50
+      });
+      return this.color('#224991');
     },
 
     moving: function() {
