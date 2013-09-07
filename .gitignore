@@ -4,6 +4,7 @@ dist
 .sass-cache
 app/bower_components
 .DS_Store
+*.orig
 
 # Vim
 *.s[a-w][a-z]
