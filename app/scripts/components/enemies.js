@@ -7,7 +7,10 @@
       });
       this.origin("center");
       this.bind("EnterFrame", this.moving);
-      this.onHit('Player', this.onHitPlayer)
+      this.onHit('Player', function(event) {
+        var player = event[0].obj;
+        this.onHitPlayer(player);
+      })
     },
 
     place: function(x) {
@@ -26,8 +29,7 @@
       }
     },
 
-    onHitPlayer: function(event) {
-      var player = event[0].obj;
+    onHitPlayer: function(player) {
       player.hurt(this.damage);
       this.hurt(player.damage);
     }
