@@ -1,26 +1,15 @@
-(function() {
-  var addCannonFodders, interactions;
+Crafty.scene('Game', function(){
 
-  interactions = function() {
-    return 1;
-  };
+    Crafty.background("url(/assets/images/bg/bg-1.png)");
 
-  addCannonFodders = function() {
-    var u;
-    if (Math.random() < 0.01) {
-      u = Crafty.e("Slime");
-      return u.place(Math.random() * WINDOW_WIDTH);
-    }
-  };
+    Crafty.audio.play("boss_background02.mp3",-1, 1.0);
 
-  Crafty.scene('game', function() {
-    Crafty.e('Player').fourway(8);
-    return this.bind("EnterFrame", function() {
-      interactions.call(this);
-      return addCannonFodders.call(this);
+    Crafty.bind("EnterFrame",function(frame){
+        //Setup Background position
+        Crafty.stage.elem.style.backgroundPosition ="0px "+frame.frame+"px";
     });
-  }, function() {
-    return 1;
-  });
 
-}).call(this);
+    Crafty.e('Health').at(5, 5);
+    Crafty.e('Health').at(45, 5);
+    Crafty.e('Health').at(85, 5);
+});

@@ -1,10 +1,13 @@
-(function() {
-  window.onload = function() {
-    Crafty.mobile = false;
-    Crafty.init(WINDOW_WIDTH, WINDOW_HEIGHT);
-    Crafty.canvas.init();
-    Crafty.background('black');
-    return Crafty.scene('game');
-  };
-
-}).call(this);
+Game = {
+    width: function(){
+        return WINDOW_WIDTH;
+    },
+    height: function(){
+        return WINDOW_HEIGHT;
+    },
+    start: function(){
+        Crafty.init(Game.width(), Game.height());
+        Crafty.canvas.init();
+        Crafty.scene('Loading');
+    }
+}
