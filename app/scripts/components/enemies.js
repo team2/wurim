@@ -37,12 +37,32 @@
     init: function() {
       this.requires("Enemy");
       this.attr({
-        hp: 20,
+        hp: 10,
         speed: 3,
         w: 30,
         h: 30
       });
       return this.color("#66ccff");
+    },
+
+    moving: function() {
+      if (this.y > WINDOW_HEIGHT) {
+        this.destroy();
+      }
+      return this.y += this.speed;
+    }
+  });
+
+  Crafty.c("Goblin", {
+    init: function() {
+      this.requires("Enemy");
+      this.attr({
+        hp: 10,
+        speed: 2,
+        w: 50,
+        h: 50
+      });
+      return this.color('#324311');
     },
 
     moving: function() {
