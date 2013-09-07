@@ -34,6 +34,8 @@
         // Player B
         bullet = Crafty.e('PlayerInitBullet');
         return bullet.fireAt(this.x + this.w - bullet.w, this.y);
+      } else if (e.key === Crafty.keys.F) {
+        Crafty.e('Boom');
       }
     },
 

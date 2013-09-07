@@ -29,7 +29,7 @@
       this.hp -= damage;
       if (this.hp <= 0) {
         this.trigger('KillEnemy');
-        return this.destroy();
+        this.destroy();
       }
     },
 
