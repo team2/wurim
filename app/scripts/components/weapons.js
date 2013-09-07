@@ -40,7 +40,9 @@ Crafty.c('PlayerInitBullet', {
   init: function() {
     this.requires('Bullet, Color');
     this.attr({
-      damage: 10
+      damage: 10,
+      w: 5,
+      h: 10
     });
     this.color('#46D898');
   },
