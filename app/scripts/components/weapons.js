@@ -22,9 +22,9 @@ Crafty.c('Bullet', {
       speed_x: 0,
       speed_y: 25
     });
-    this.bind('EnterFrame', this.move);
+    this.bind('EnterFrame', this.moving);
   },
-  move: function() {
+  moving: function() {
     if (this.y < 0 || this.y > Game.width()
       || this.x < 0 || this.x > Game.height())  {
         this.destroy();

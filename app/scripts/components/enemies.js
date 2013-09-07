@@ -2,9 +2,12 @@
   Crafty.c("Enemy", {
     init: function() {
       this.requires("Character");
+      this.attr({
+        damage: 10
+      });
       this.origin("center");
       this.bind("EnterFrame", this.moving);
-      this.bind('Damage', this.damage);
+      this.bind('HurtEnemy', this.damage);
       this.onHit('Bullet', this.onDamage);
     },
 
@@ -22,19 +25,19 @@
       return this.y += this.speed;
     },
 
-    onDamage: function(event) {
-      var bullet = event[0].obj;
-      this.trigger('Damage', bullet.damage);
-      bullet.destroy();
-    },
-
     damage: function(damage) {
-      // Crafty.trigger('EnemyHit', [this, damage]);
       this.hp -= damage;
       if (this.hp <= 0) {
         return this.destroy();
       }
-    }
+    },
+
+    onDamage: function(event) {
+      var bullet = event[0].obj;
+      console.log(bullet)
+      this.trigger('HurtEnemy', bullet.damage);
+      bullet.destroy();
+    },
   });
 
   Crafty.c("Slime", {
