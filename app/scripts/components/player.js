@@ -35,7 +35,7 @@
         bullet = Crafty.e('PlayerInitBullet');
         return bullet.place(this.x + this.w - bullet.w, this.y);
       }
-    }
+    },
 
     damage: function(damage) {
       this.hp -= damage;
