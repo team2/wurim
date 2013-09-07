@@ -17,17 +17,20 @@ Crafty.scene('Loading', function(){
       Crafty.audio.add('biu', '/assets/sounds/g_biu.m4a');
       Crafty.audio.add('tu', '/assets/sounds/g_tu.m4a');
 
+      Crafty.sprite('/assets/images/health/health.png',
+        {health: [0, 0, 50, 50]});
+
       Crafty.sprite('/assets/images/robot/player.png',
         {player: [0, 0, 96, 108]});
 
       Crafty.sprite('/assets/images/monster/monster-2.png',
-        {monster1: [0, 0, 48, 60]});
+        {monster1: [0, 0, 48, 72]});
 
       Crafty.sprite('/assets/images/monster/monster-3.png',
         {monster2: [0, 0, 36, 48]});
 
       Crafty.sprite('/assets/images/monster/monster-4.png',
-        {monster3: [0, 0, 70, 60]});
+        {monster3: [0, 0, 60, 60]});
 
       Crafty.sprite('/assets/images/bullet/bullet-2.png',
         {bullet2: [0, 0, 12, 36]});
