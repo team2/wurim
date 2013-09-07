@@ -14,8 +14,6 @@
       this.color("rgb(255, 0, 0)");
       this.bind('Moved', this.stopOnBorder);
       this.bind('KeyDown', this.fire);
-      this.bind('HurtPlayer', this.hurt);
-      this.onHit('Enemy', this.onDamage);
     },
 
     stopOnBorder: function() {
@@ -30,32 +28,35 @@
       if (e.key === Crafty.keys.X) {
         // Player A
         bullet = Crafty.e('PlayerInitBullet');
-        return bullet.fireAt(this.x, this.y);
+        Crafty.audio.play('biu');
+        bullet.fireAt(this.x, this.y);
       } else if (e.key === Crafty.keys.C) {
         // Player B
         bullet = Crafty.e('PlayerInitBullet');
-        return bullet.fireAt(this.x + this.w - bullet.w, this.y);
-      } else if (e.key === Crafty.keys.F) {
-        Crafty.e('Boom');
+        Crafty.audio.play('biu');
+        bullet.fireAt(this.x + this.w - bullet.w, this.y);
+      } else if (
+          (e.key === Crafty.keys.F || e.key == Crafty.keys.G) &&
+          !this.in_boom) {
+        var cd = Crafty.e('BoomCountdown');
+        var self = this;
+        cd.setKey(e.key == Crafty.keys.F ? Crafty.keys.G : Crafty.keys.F);
+        cd.bind('Remove', function() {
+          console.log('!!!');
+          self.in_boom = false
+        });
+        self.in_boom = true;
       }
     },
 
     hurt: function(damage) {
       this.hp -= damage;
+      Crafty.trigger('HurtPlayer', this);
       if (this.hp <= 0) {
-        Crafty.trigger('KillPlayer');
+        Crafty.trigger('KillPlayer', this);
         return this.destroy();
       }
     },
-
-    onDamage: function(event) {
-      var enemy = event[0].obj;
-      Crafty.trigger('HurtPlayer', enemy.damage);
-      enemy.hp -= this.damage;
-      if (enemy.hp <= 0) {
-        enemy.destroy();
-      }
-    }
   });
 
 }).call(this);

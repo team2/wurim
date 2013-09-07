@@ -7,8 +7,7 @@
       });
       this.origin("center");
       this.bind("EnterFrame", this.moving);
-      this.bind('HurtEnemy', this.hurt);
-      this.onHit('Bullet', this.onDamage);
+      this.onHit('Player', this.onHitPlayer)
     },
 
     place: function(x) {
@@ -19,25 +18,26 @@
     },
 
     hurt: function(damage) {
+      Crafty.trigger('HurtEnemy', this);
       this.hp -= damage;
       if (this.hp <= 0) {
-        Crafty.trigger('KillEnemy');
+        Crafty.trigger('KillEnemy', this);
         this.destroy();
       }
     },
 
-    onDamage: function(event) {
-      var bullet = event[0].obj;
-      Crafty.trigger('HurtEnemy', bullet.damage);
-      bullet.destroy();
+    onHitPlayer: function(event) {
+      var player = event[0].obj;
+      player.hurt(this.damage);
+      this.hurt(player.damage);
     }
   });
 
-  Crafty.c("Slime", {
+  Crafty.c("Goblin", {
     init: function() {
       this.requires("Enemy");
       this.attr({
-        hp: 20,
+        hp: 10,
         speed: 3,
         w: 30,
         h: 30
@@ -53,16 +53,16 @@
     }
   });
 
-  Crafty.c("Boss1", {
+  Crafty.c("Slime", {
     init: function() {
       this.requires("Enemy");
       this.attr({
-        hp: 2500,
-        speed: 1,
-        w: 100,
-        h: 100
+        hp: 10,
+        speed: 2,
+        w: 50,
+        h: 50
       });
-      return this.color("#66ccff");
+      return this.color('#324311');
     },
 
     moving: function() {
@@ -70,6 +70,59 @@
         this.destroy();
       }
       return this.y += this.speed;
+    },
+
+    hurt: function(damage) {
+      this.hp -= damage;
+      if (this.hp <= 0) {
+        Crafty.trigger('KillEnemy');
+        this.destroy();
+      }
+    }
+  });
+
+  Crafty.c("Orc", {
+    init: function() {
+      this.requires("Enemy");
+      this.attr({
+        hp: 100,
+        speed: 2,
+        w: 50,
+        h: 50
+      });
+      return this.color('#224991');
+    },
+
+    moving: function() {
+      if (this.y > WINDOW_HEIGHT) {
+        this.destroy();
+      }
+      return this.y += this.speed;
+    }
+  });
+
+  Crafty.c("Boss1", {
+    init: function() {
+      this.requires("Enemy");
+      this.attr({
+        hp: 2500,
+        x_speed: 1,
+        y_speed: 1,
+        w: 100,
+        h: 100
+      });
+      return this.color("#66ccff");
+    },
+
+    moving: function() {
+      if ((this.x < 0 && this.x_speed < 0) || (this.x >= WINDOW_WIDTH - this.w && this.x_speed > 0)) {
+        this.x_speed = -this.x_speed;
+      }
+      if ((this.y < 0 && this.y_speed < 0) || (this.y >= WINDOW_HEIGHT - this.h * 4 && this.y_speed > 0)) {
+        this.y_speed = -this.y_speed;
+      }
+      this.x += this.x_speed;
+      this.y += this.y_speed;
     }
   });
 

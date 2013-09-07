@@ -8,7 +8,6 @@ Crafty.scene('Loading', function(){
         "/assets/images/health/health.png",
         "/assets/sounds/alt_attack01.ogg",
         "/assets/sounds/alt_attack02.wav",
-        "/assets/sounds/biubiubiu.wav", 
         "/assets/sounds/boom.mp3",
         "/assets/sounds/boss_background01.ogg",
         "/assets/sounds/boss_background02.mp3",
@@ -20,4 +19,6 @@ Crafty.scene('Loading', function(){
             Crafty.scene('Game');
         }
     )
+
+    Crafty.audio.add('biu', '/assets/sounds/biubiubiu.wav')
 })
