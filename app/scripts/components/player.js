@@ -14,8 +14,6 @@
       this.color("rgb(255, 0, 0)");
       this.bind('Moved', this.stopOnBorder);
       this.bind('KeyDown', this.fire);
-      this.bind('HurtPlayer', this.hurt);
-      this.onHit('Enemy', this.onDamage);
     },
 
     stopOnBorder: function() {
@@ -44,20 +42,12 @@
 
     hurt: function(damage) {
       this.hp -= damage;
+      Crafty.trigger('HurtPlayer', this);
       if (this.hp <= 0) {
-        Crafty.trigger('KillPlayer');
+        Crafty.trigger('KillPlayer', this);
         return this.destroy();
       }
     },
-
-    onDamage: function(event) {
-      var enemy = event[0].obj;
-      Crafty.trigger('HurtPlayer', enemy.damage);
-      enemy.hp -= this.damage;
-      if (enemy.hp <= 0) {
-        enemy.destroy();
-      }
-    }
   });
 
 }).call(this);

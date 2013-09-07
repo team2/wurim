@@ -7,8 +7,7 @@
       });
       this.origin("center");
       this.bind("EnterFrame", this.moving);
-      this.bind('HurtEnemy', this.hurt);
-      this.onHit('Bullet', this.onDamage);
+      this.onHit('Player', this.onHitPlayer)
     },
 
     place: function(x) {
@@ -19,17 +18,18 @@
     },
 
     hurt: function(damage) {
+      Crafty.trigger('HurtEnemy', this);
       this.hp -= damage;
       if (this.hp <= 0) {
-        Crafty.trigger('KillEnemy');
+        Crafty.trigger('KillEnemy', this);
         this.destroy();
       }
     },
 
-    onDamage: function(event) {
-      var bullet = event[0].obj;
-      Crafty.trigger('HurtEnemy', bullet.damage);
-      bullet.destroy();
+    onHitPlayer: function(event) {
+      var player = event[0].obj;
+      player.hurt(this.damage);
+      this.hurt(player.damage);
     }
   });
 
