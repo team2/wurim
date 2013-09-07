@@ -44,7 +44,6 @@
         var self = this;
         cd.setKey(e.key == Crafty.keys.F ? Crafty.keys.G : Crafty.keys.F);
         cd.bind('Remove', function() {
-          console.log('!!!');
           self.in_boom = false
         });
         self.in_boom = true;
