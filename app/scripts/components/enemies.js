@@ -13,7 +13,7 @@
     place: function(x) {
       return this.attr({
         x: x,
-        y: -20
+        y: -100
       });
     },
 
@@ -22,6 +22,7 @@
       this.hp -= damage;
       if (this.hp <= 0) {
         Crafty.trigger('KillEnemy', this);
+        this.beforeDestory();
         this.destroy();
       }
     },
@@ -37,6 +38,7 @@
     init: function() {
       this.requires("Enemy");
       this.attr({
+        direction: 0,
         hp: 10,
         speed: 3,
         w: 30,
@@ -45,11 +47,19 @@
       return this.color("#66ccff");
     },
 
+    beforeDestory: function() {
+    },
+
     moving: function() {
       if (this.y > WINDOW_HEIGHT) {
         this.destroy();
       }
-      return this.y += this.speed;
+      if (this.direction === 0) {
+        this.y += this.speed;
+      } else {
+        this.y += this.speed * 0.8;
+        this.x += this.speed * this.direction * 0.3;
+      }
     }
   });
 
@@ -71,12 +81,13 @@
       }
       return this.y += this.speed;
     },
-
-    hurt: function(damage) {
-      this.hp -= damage;
-      if (this.hp <= 0) {
-        Crafty.trigger('KillEnemy');
-        this.destroy();
+    
+    beforeDestory: function() {
+      for (var i=-1; i<=1; i++) {
+        var u = Crafty.e("Goblin");
+        u.direction = i;
+        u.x = this.x;
+        u.y = this.y;
       }
     }
   });
@@ -93,6 +104,9 @@
       return this.color('#224991');
     },
 
+    beforeDestory: function() {
+    },
+    
     moving: function() {
       if (this.y > WINDOW_HEIGHT) {
         this.destroy();
@@ -112,6 +126,9 @@
         h: 100
       });
       return this.color("#66ccff");
+    },
+    
+    beforeDestory: function() {
     },
 
     moving: function() {
