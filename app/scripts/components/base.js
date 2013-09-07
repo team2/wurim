@@ -3,6 +3,10 @@
 Crafty.c('Actor', {
   init: function() {
     this.requires('2D, DOM');
+    this.attr({
+      x: 0,
+      y: 0
+    })
   },
 
   // Locate this entity at the given position on the grid

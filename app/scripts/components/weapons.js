@@ -23,34 +23,50 @@ Crafty.c('Bullet', {
       speed_y: 25
     });
     this.bind('EnterFrame', this.moving);
-    this.onHit('Enemy', this.onHitEnemy);
   },
   moving: function() {
-    if (this.y < 0 || this.y > Game.height()
-      || this.x < 0 || this.x > Game.width())  {
+    if (this.y < 0 || this.y > Game.height
+      || this.x < 0 || this.x > Game.width)  {
         this.destroy();
         return;
       }
       this.y -= this.speed_y;
       this.x -= this.speed_x;
   },
-  onHitEnemy: function(event) {
-    var enemy = event[0].obj;
-    this.destroy();
+});
+
+
+Crafty.c('PlayerBullet', {
+  init: function() {
+    this.requires('Bullet');
+    this.onHit('Enemy', function(event) {
+      var enemy = event[0].obj;
+      this.onHitEnemy(enemy);
+    });
+  },
+
+  onHitEnemy: function(enemy) {
     enemy.hurt(this.damage);
+    this.destroy();
   }
 });
 
 
-Crafty.c('PlayerInitBullet', {
+Crafty.c('PlayerInitBulletLeft', {
   init: function() {
-    this.requires('Bullet, Color');
+    this.requires('PlayerBullet, bullet2');
     this.attr({
       damage: 10,
-      w: 5,
-      h: 10
     });
-    this.color('#46D898');
+  },
+});
+
+Crafty.c('PlayerInitBulletRight', {
+  init: function() {
+    this.requires('PlayerBullet, bullet3');
+    this.attr({
+      damage: 10,
+    });
   },
 });
 

@@ -5,7 +5,8 @@
     "jquery": "~1.10.2",
     "hammerjs": "latest",
     "fastclick": "latest",
-    "socket.io-client": "latest"
+    "socket.io-client": "latest",
+    "underscore": "latest"
   },
   "devDependencies": {}
 }

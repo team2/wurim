@@ -1,7 +1,7 @@
 (function() {
   Crafty.c("Player", {
     init: function() {
-      this.requires("Character");
+      this.requires("2D, Canvas, player, SpriteAnimation, Collision");
       this._speed = { x: 0, y: 0 }
       this._speedA = { x: 0, y: 0 }
       this._speedB = { x: 0, y: 0 }
@@ -11,8 +11,6 @@
         hp: 30,
         x: WINDOW_WIDTH / 2 - 20,
         y: WINDOW_HEIGHT - 20,
-        w: 20,
-        h: 20,
         damage: 10
       });
       this.origin("center");
@@ -28,6 +26,7 @@
         }
         this.setSpeed()
       });
+      this.reset();
     },
 
     moving: function () {
@@ -59,17 +58,21 @@
       this._speed.x = this._speedA.x + this._speedB.x
       this._speed.y = this._speedA.y + this._speedB.y
     },
+    biu: _.throttle(function() {Crafty.audio.play("biu");}, 500),
+
+    tu: _.throttle(function() {Crafty.audio.play("tu");}, 500),
+
     fire: function(e) {
       var bullet;
       if (e.key === Crafty.keys.X) {
         // Player A
-        bullet = Crafty.e('PlayerInitBullet');
-        Crafty.audio.play('biu');
+        bullet = Crafty.e('PlayerInitBulletLeft');
+        this.biu();
         bullet.fireAt(this.x, this.y);
       } else if (e.key === Crafty.keys.C) {
         // Player B
-        bullet = Crafty.e('PlayerInitBullet');
-        Crafty.audio.play('biu');
+        bullet = Crafty.e('PlayerInitBulletRight');
+        this.tu()
         bullet.fireAt(this.x + this.w - bullet.w, this.y);
       } else if (
           (e.key === Crafty.keys.F || e.key == Crafty.keys.G) &&
@@ -78,7 +81,6 @@
         var self = this;
         cd.setKey(e.key == Crafty.keys.F ? Crafty.keys.G : Crafty.keys.F);
         cd.bind('Remove', function() {
-          console.log('!!!');
           self.in_boom = false
         });
         self.in_boom = true;
@@ -87,6 +89,7 @@
 
     hurt: function(damage) {
       this.hp -= damage;
+      Crafty.audio.play("hurt");
       Crafty.trigger('HurtPlayer', this);
       if (this.hp <= 0) {
         Crafty.trigger('KillPlayer', this);

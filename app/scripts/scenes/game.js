@@ -1,8 +1,7 @@
 Crafty.scene('Game', function(){
 
   Crafty.background("url(/assets/images/bg/bg-1.png)");
-
-  Crafty.audio.play("boss_background02.mp3",-1, 1.0);
+  Crafty.audio.play("bgm",-1, 0.5);
 
 
   var p = Crafty.e('Player')
@@ -31,4 +30,13 @@ Crafty.scene('Game', function(){
     Crafty.stage.elem.style.backgroundPosition ="0px "+frame.frame+"px";
     return addCannonFodders.call(this);
   });
+
+  this.bind('KillPlayer', function(){
+    Crafty.scene('GameOver');
+  })
+  Crafty.bind('KeyDown', function(e){
+    if(e.key == Crafty.keys['P']){
+      Crafty.pause();
+    }
+  })
 });

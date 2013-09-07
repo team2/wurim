@@ -1,19 +1,22 @@
 (function() {
   Crafty.c("Enemy", {
     init: function() {
-      this.requires("Character");
+      this.requires("2D, Canvas, Collision");
       this.attr({
         damage: 10
       });
       this.origin("center");
       this.bind("EnterFrame", this.moving);
-      this.onHit('Player', this.onHitPlayer)
+      this.onHit('Player', function(event) {
+        var player = event[0].obj;
+        this.onHitPlayer(player);
+      })
     },
 
     place: function(x) {
       return this.attr({
         x: x,
-        y: -20
+        y: -100
       });
     },
 
@@ -22,12 +25,12 @@
       this.hp -= damage;
       if (this.hp <= 0) {
         Crafty.trigger('KillEnemy', this);
+        this.beforeDestory();
         this.destroy();
       }
     },
 
-    onHitPlayer: function(event) {
-      var player = event[0].obj;
+    onHitPlayer: function(player) {
       player.hurt(this.damage);
       this.hurt(player.damage);
     }
@@ -35,34 +38,43 @@
 
   Crafty.c("Goblin", {
     init: function() {
-      this.requires("Enemy");
+      this.requires("Enemy, monster2");
       this.attr({
+        direction: 0,
         hp: 10,
         speed: 3,
         w: 30,
         h: 30
       });
-      return this.color("#66ccff");
+      return this
+    },
+
+    beforeDestory: function() {
     },
 
     moving: function() {
       if (this.y > WINDOW_HEIGHT) {
         this.destroy();
       }
-      return this.y += this.speed;
+      if (this.direction === 0) {
+        this.y += this.speed;
+      } else {
+        this.y += this.speed * 0.8;
+        this.x += this.speed * this.direction * 0.3;
+      }
     }
   });
 
   Crafty.c("Slime", {
     init: function() {
-      this.requires("Enemy");
+      this.requires("Enemy, monster1");
       this.attr({
-        hp: 10,
+        hp: 30,
         speed: 2,
-        w: 50,
-        h: 50
+        w: 48,
+        h: 72
       });
-      return this.color('#324311');
+      return this
     },
 
     moving: function() {
@@ -71,28 +83,32 @@
       }
       return this.y += this.speed;
     },
-
-    hurt: function(damage) {
-      this.hp -= damage;
-      if (this.hp <= 0) {
-        Crafty.trigger('KillEnemy');
-        this.destroy();
+    
+    beforeDestory: function() {
+      for (var i=-1; i<=1; i++) {
+        var u = Crafty.e("Goblin");
+        u.direction = i;
+        u.x = this.x;
+        u.y = this.y;
       }
     }
   });
 
   Crafty.c("Orc", {
     init: function() {
-      this.requires("Enemy");
+      this.requires("Enemy, monster3");
       this.attr({
-        hp: 100,
+        hp: 90,
         speed: 2,
         w: 50,
         h: 50
       });
-      return this.color('#224991');
+      return this;
     },
 
+    beforeDestory: function() {
+    },
+    
     moving: function() {
       if (this.y > WINDOW_HEIGHT) {
         this.destroy();
@@ -103,15 +119,18 @@
 
   Crafty.c("Boss1", {
     init: function() {
-      this.requires("Enemy");
+      this.requires("Enemy, boss1");
       this.attr({
         hp: 2500,
         x_speed: 1,
         y_speed: 1,
-        w: 100,
-        h: 100
+        w: 365,
+        h: 240
       });
-      return this.color("#66ccff");
+      return this;
+    },
+    
+    beforeDestory: function() {
     },
 
     moving: function() {
