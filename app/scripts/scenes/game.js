@@ -11,9 +11,12 @@ Crafty.scene('Game', function(){
 
   addCannonFodders = function() {
     var u;
-    if (Math.random() < 0.01) {
+    if (Math.random() < 0.02) {
       u = Crafty.e("Slime");
-      return u.place(Math.random() * (WINDOW_WIDTH - u.w));
+      u.place(Math.random() * (WINDOW_WIDTH - u.w));
+    } else if (Math.random() < 0.01) {
+      u = Crafty.e("Boss1");
+      u.place(Math.random() * (WINDOW_WIDTH - u.w));
     }
   };
 
