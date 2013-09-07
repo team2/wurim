@@ -29,11 +29,11 @@
       if (e.key === Crafty.keys.X) {
         // Player A
         bullet = Crafty.e('PlayerInitBullet');
-        return bullet.place(this.x, this.y);
+        return bullet.fireAt(this.x, this.y);
       } else if (e.key === Crafty.keys.C) {
         // Player B
         bullet = Crafty.e('PlayerInitBullet');
-        return bullet.place(this.x + this.w - bullet.w, this.y);
+        return bullet.fireAt(this.x + this.w - bullet.w, this.y);
       }
     },
 

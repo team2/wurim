@@ -7,7 +7,7 @@ Crafty.c('Weapon', {
       damage: 10
     });
   },
-  place: function(x, y) {
+  fireAt: function(x, y) {
     this.x = x;
     this.y = y;
   }
@@ -25,8 +25,8 @@ Crafty.c('Bullet', {
     this.bind('EnterFrame', this.moving);
   },
   moving: function() {
-    if (this.y < 0 || this.y > Game.width()
-      || this.x < 0 || this.x > Game.height())  {
+    if (this.y < 0 || this.y > Game.height()
+      || this.x < 0 || this.x > Game.width())  {
         this.destroy();
         return;
       }
