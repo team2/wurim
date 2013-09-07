@@ -28,11 +28,14 @@ Crafty.scene('Loading', function(){
       Crafty.sprite('/assets/images/monster/monster-2.png',
         {monster1: [0, 0, 48, 72]});
 
-      Crafty.sprite('/assets/images/monster/monster-3.png',
-        {monster2: [0, 0, 36, 48]});
+      Crafty.sprite('/assets/images/monster/monster-5.png',
+        {monster2: [0, 0, 36, 36]});
 
       Crafty.sprite('/assets/images/monster/monster-4.png',
         {monster3: [0, 0, 60, 60]});
+
+      Crafty.sprite('/assets/images/boss/boss1.png',
+        {boss1: [0, 0, 365, 240]});
 
       Crafty.sprite('/assets/images/bullet/bullet-2.png',
         {bullet2: [0, 0, 12, 36]});

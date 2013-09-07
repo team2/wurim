@@ -71,8 +71,8 @@
       this.attr({
         hp: 10,
         speed: 2,
-        w: 50,
-        h: 50
+        w: 48,
+        h: 72
       });
       return this
     },
