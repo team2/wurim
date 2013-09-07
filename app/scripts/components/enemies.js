@@ -98,7 +98,7 @@
     init: function() {
       this.requires("Enemy, monster3");
       this.attr({
-        hp: 100,
+        hp: 70,
         speed: 2,
         w: 50,
         h: 50
