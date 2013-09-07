@@ -17,6 +17,7 @@ Crafty.scene('Loading', function(){
       Crafty.audio.add("biu", '/assets/sounds/g_biu.m4a');
       Crafty.audio.add("tu", '/assets/sounds/g_tu.m4a');
       Crafty.audio.add("bgm", '/assets/sounds/boss_background02.mp3');
+      Crafty.audio.add("hurt", "/assets/sounds/se_invalid.wav");
 
       Crafty.sprite('/assets/images/robot/player.png',
         {player: [0, 0, 96, 108]});
