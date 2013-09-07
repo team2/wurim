@@ -69,7 +69,7 @@
     init: function() {
       this.requires("Enemy, monster1");
       this.attr({
-        hp: 10,
+        hp: 30,
         speed: 2,
         w: 48,
         h: 72
@@ -98,7 +98,7 @@
     init: function() {
       this.requires("Enemy, monster3");
       this.attr({
-        hp: 70,
+        hp: 90,
         speed: 2,
         w: 50,
         h: 50
