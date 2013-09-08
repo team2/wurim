@@ -16,7 +16,8 @@ Crafty.scene('Loading', function(){
     "/assets/sounds/boss_background01.ogg",
     "/assets/sounds/boss_background02.mp3",
     "/assets/sounds/game_over.ogg",
-    "/assets/sounds/supply01.mp3"],
+    "/assets/sounds/supply01.mp3",
+    "/assets/fonts/8bit.ttf"],
 
     function(){
       Crafty.audio.add('biu', '/assets/sounds/biu.wav');

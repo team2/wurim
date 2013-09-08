@@ -34,12 +34,14 @@
         x: 220,
         y: 12,
         w: 160,
-        h: 5,
-        score: 0
+        h: 20,
+        score: -99999999
       });
       this.unselectable();
       this.textColor('white');
-      this.textFont({size: '30px'});
+      this.textFont("size", "30px");
+      // this.textFont("family", "8bit.ttf");
+      this.css("style", "font-family:8BIT WONDER");
       this.updateScore()
       this.bind("KillEnemy", function(u) {
         if (u.__c.Goblin) {
