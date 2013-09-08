@@ -4,8 +4,8 @@ Crafty.scene('GameOver', function(){
     .image('/assets/images/gameover.png')
     .bind('KeyDown', function () {
       if (this.isDown('X')) {
-        Crafty.scene('Game')
         this.destroy()
+        Crafty.scene('Game')
       }
     })
 

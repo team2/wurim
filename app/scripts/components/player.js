@@ -5,8 +5,8 @@
       this._speed = { x: 0, y: 0 }
       this._speedA = { x: 0, y: 0 }
       this._speedB = { x: 0, y: 0 }
-      this.minSpeed = 2
-      this.maxSpeed = 5
+      this.minSpeed = 1
+      this.maxSpeed = 2.5
       this.attr({
         hp: 30,
         x: WINDOW_WIDTH / 2 - 96 / 2,
