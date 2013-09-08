@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "8bit";
+    src: "/assets/fonts/8bit.ttf";
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -30,7 +35,7 @@ body {
 }
 
 .landing {
-    padding: 292px 50px;
+    padding: 250px 0px 0;
     width: 610px;
     margin: 0 auto;
 }
@@ -41,8 +46,8 @@ body {
     0% {
         color: #2B992B;
     }
-    50% {
-        color:#30D530;
+    70% {
+        color:#30a530;
     }
     100% {
         color: #2B992B;

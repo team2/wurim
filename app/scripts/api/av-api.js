@@ -1,8 +1,8 @@
 (function(global) {
     AV.initialize("sn2gm4yegzgd2rdbew8t5a6egvi7z4c94xi857952q23ty08", "sujpugku5trg2ikg0ms71ve6oe4t35h0fpj0qlj9269xb74r");
-    
+
     var GameScore = AV.Object.extend("GameScore");
-    
+
     api = global.api || {}
 
     api.addGameScore = function(score, p1Name, p2Name, callback) {
@@ -35,5 +35,5 @@
             }
         });
     };
-
+    global.av = api
 }(this));

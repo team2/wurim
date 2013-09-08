@@ -2,6 +2,7 @@
   "name": "wurim",
   "version": "0.0.0",
   "dependencies": {
+    "bootstrap": "latest",
     "jquery": "~1.10.2",
     "hammerjs": "latest",
     "fastclick": "latest",

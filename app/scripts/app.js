@@ -1,7 +1,7 @@
 (function () {
   window.app = window.app || {}
   app.players = {
-    a: true,
+    a: false,
     b: false,
   }
   app.ensureGame = function () {
@@ -39,6 +39,9 @@
   socket.on('key', function (e) {
     emit(e)
   })
-  // For test：
-  // Game.start()
+  $('.save-score').click(function () {
+    api.addGameScore(score.getScore(), $('.aname').val(), $('.bname').val(), function (err, ret) {
+      $('#myModal').modal('hide')
+    })
+  })
 })()

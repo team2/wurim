@@ -25,4 +25,42 @@
       }
     },
   });
+
+  Crafty.c("ScoreText", {
+    init: function() {
+      that = this;
+      this.requires("2D, DOM, Text");
+      this.attr({
+        x: 220,
+        y: 12,
+        w: 160,
+        h: 5,
+        score: 0
+      });
+      this.unselectable();
+      this.textColor('white');
+      this.textFont({size: '30px'});
+      this.updateScore()
+      this.bind("KillEnemy", function(u) {
+        if (u.__c.Goblin) {
+          that.score += 32;
+        } else if (u.__c.Slime) {
+          that.score += 64;
+        } else if (u.__c.Orc) {
+          that.score += 128;
+        } else if (u.__c.Boss1) {
+          this.score += 1024;
+        }
+        that.updateScore();
+      })
+    },
+    updateScore: function() {
+      scoreStr = "" + this.score;
+      scoreStr = new Array(8 - scoreStr.length + 1).join("0") + scoreStr;
+      this.text(scoreStr);
+    },
+    getScore: function () {
+      return this.score
+    }
+  });
 }).call(this);

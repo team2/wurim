@@ -120,6 +120,24 @@
     }
   });
 
+  Crafty.c("Train", {
+    init: function() {
+        this.requires("Enemy, monster3");
+        this.attr({
+          hp: +Infinity,
+          speed: 10,
+          w: 1000,
+          h: 40
+        });
+    },
+
+    beforeDestory: function() {},
+
+    moving: function() {
+        return this.x += this.speed; 
+    }
+  });
+
   Crafty.c("Boss1", {
     init: function() {
       this.requires("Enemy, boss1");

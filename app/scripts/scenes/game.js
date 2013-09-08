@@ -3,7 +3,9 @@ Crafty.scene('Game', function(){
   Crafty.background("url(/assets/images/bg/bg-1.png)");
   Crafty.audio.play("bgm", -1, 0.5);
 
-  var p = Crafty.e('Player')
+  Crafty.e('Player')
+  window.score = Crafty.e("ScoreText");
+
 
   Crafty.e('Health');
   Crafty.e('SupplyWidget');
