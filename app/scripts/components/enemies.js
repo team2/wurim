@@ -1,7 +1,7 @@
 (function() {
   Crafty.c("Enemy", {
     init: function() {
-      this.requires("2D, DOM, Collision");
+      this.requires("2D, Canvas, Collision");
       this.attr({
         damage: 10
       });
@@ -43,8 +43,8 @@
         direction: 0,
         hp: 10,
         speed: 3,
-        //w: 30,
-        //h: 30
+        w: 30,
+        h: 30
       });
       return this
     },
@@ -69,10 +69,10 @@
     init: function() {
       this.requires("Enemy, monster1");
       this.attr({
-        hp: 10,
+        hp: 30,
         speed: 2,
-        //w: 50,
-        //h: 50
+        w: 48,
+        h: 72
       });
       return this
     },
@@ -98,10 +98,10 @@
     init: function() {
       this.requires("Enemy, monster3");
       this.attr({
-        hp: 100,
+        hp: 90,
         speed: 2,
-        //w: 50,
-        //h: 50
+        w: 50,
+        h: 50
       });
       return this;
     },
@@ -119,13 +119,13 @@
 
   Crafty.c("Boss1", {
     init: function() {
-      this.requires("Enemy");
+      this.requires("Enemy, boss1");
       this.attr({
         hp: 2500,
         x_speed: 1,
         y_speed: 1,
-        w: 100,
-        h: 100
+        w: 365,
+        h: 240
       });
       return this;
     },

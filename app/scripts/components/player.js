@@ -1,7 +1,7 @@
 (function() {
   Crafty.c("Player", {
     init: function() {
-      this.requires("2D, DOM, player, Fourway, SpriteAnimation, Collision");
+      this.requires("2D, Canvas, player, Fourway, SpriteAnimation, Collision");
       this.attr({
         hp: 30,
         x: WINDOW_WIDTH / 2 - 20,
@@ -52,6 +52,7 @@
 
     hurt: function(damage) {
       this.hp -= damage;
+      Crafty.audio.play("hurt");
       Crafty.trigger('HurtPlayer', this);
       if (this.hp <= 0) {
         Crafty.trigger('KillPlayer', this);
