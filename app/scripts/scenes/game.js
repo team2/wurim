@@ -1,53 +1,75 @@
 Crafty.scene('Game', function(){
   $('.loading-bar').hide()
+  var boss_time = false;
   Crafty.background("url(/assets/images/bg/bg-1.png)");
   Crafty.audio.play("bgm", -1, 0.5);
 
-  Crafty.e('Player')
+  var player = Crafty.e('Player')
   window.score = Crafty.e("ScoreText");
-
 
   Crafty.e('Health');
   Crafty.e('SupplyWidget');
 
   var addCannonFodders = function() {
     var u;
-    if (Math.random() < 0.02) {
+    if (Math.random() < 0.02 && !boss_time) {
       u = Crafty.e("Goblin");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
-    } else if (Math.random() < 0.005) {
+    } else if (Math.random() < 0.005 && !boss_time) {
       u = Crafty.e("Slime");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
-    } else if (Math.random() < 0.005) {
+    } else if (Math.random() < 0.005 && !boss_time) {
       u = Crafty.e("Orc");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
     } else if (Math.random() < 0.003) {
       u = Crafty.e("BoomFallingSupply");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
-    } else if (Math.random() < 0.001) {
-      u = Crafty.e("Boss1");
+    } else if (Math.random() < 0.003) {
+      u = Crafty.e("HPFallingSupply");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
     }
   };
 
+  // Boss
+  setInterval(function(){
+    if (boss_time) {
+      return;
+    }
+    boss_time = true;
+    u = Crafty.e("Boss1");
+    u.place(Math.random() * (WINDOW_WIDTH - u.w));
+  }, BOSS_APPEAR_DELAY);
+
+  // Line 13
+  setInterval(function() {
+    var line13 = Crafty.e('Line13');
+    line13.placeLine13(WINDOW_WIDTH + 700, player.y);
+  }, LINE13_APPEAR_DELAY);
+
   this.bind("EnterFrame",function(frame){
-      //Setup Background position
-    Crafty.stage.elem.style.backgroundPosition ="0px " + frame.frame + "px";
+    // Setup background position
+    Crafty.stage.elem.style.backgroundPosition = "0px " + frame.frame + "px";
     return addCannonFodders.call(this);
   });
 
-  this.bind('KillPlayer', function(){
+  Crafty.bind('KillEnemy', function(e){
+    if(e.__c.Boss1){
+      boss_time = false;
+    }
+  });
+
+  Crafty.bind('KillPlayer', function(){
     Crafty.scene('GameOver');
   });
 
   Crafty.bind('KeyDown', function(e){
-    if(e.key == Crafty.keys['P']){
+    if (e.key == Crafty.keys.P) {
       Crafty.pause();
     }
   });
 
   Crafty.bind('KillEnemy', function(e) {
-    if(e.explodeEffect) {
+    if (e.explodeEffect) {
       var effect = Crafty.e('2D, Canvas, ' + e.explodeEffect);
       effect.attr({
         x: e.x + e.w / 2 - effect.w / 2, y: e.y + e.h / 2 - effect.h / 2,
@@ -55,6 +77,7 @@ Crafty.scene('Game', function(){
       setTimeout(function() {
         effect.destroy()
       }, 500);
+      Crafty.audio.play('explode', 1, 0.2);
     }
   });
 });

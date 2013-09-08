@@ -13,19 +13,24 @@ Crafty.scene('Loading', function(){
     "/assets/sounds/alt_attack02.wav",
     "/assets/sounds/biu.wav",
     "/assets/sounds/tu.wav",
+    "/assets/sounds/se_enep00.wav",
     "/assets/sounds/boom.mp3",
     "/assets/sounds/boss_background01.ogg",
     "/assets/sounds/boss_background02.mp3",
     "/assets/sounds/game_over.ogg",
-    "/assets/sounds/supply01.mp3"],
+    "/assets/sounds/supply01.mp3",
+    "/assets/fonts/8bit.ttf"],
 
     function(){
+      Crafty.audio.add('ah', '/assets/sounds/ah.mp3');
       Crafty.audio.add('biu', '/assets/sounds/biu.wav');
       Crafty.audio.add('tu', '/assets/sounds/tu.wav');
+      Crafty.audio.add('ding', '/assets/sounds/ding.mp3');
       Crafty.audio.add("bgm", '/assets/sounds/boss_background02.mp3');
       Crafty.audio.add("hurt", "/assets/sounds/se_invalid.wav");
       Crafty.audio.add("supply01", "/assets/sounds/supply01.mp3");
       Crafty.audio.add("ex01", "/assets/sounds/alt_attack01.ogg");
+      Crafty.audio.add("explode", "/assets/sounds/se_enep00.wav");
 
       Crafty.sprite('/assets/images/widgets/health.png',
         {health: [0, 0, 50, 50]});
@@ -35,6 +40,9 @@ Crafty.scene('Loading', function(){
 
       Crafty.sprite('/assets/images/supplies/boom_falling_supply.png',
         {boom_falling_supply: [0, 0, 60, 60]});
+
+      Crafty.sprite('/assets/images/supplies/hp_falling_supply.png',
+        {hp_falling_supply: [0, 0, 60, 60]});
 
       Crafty.sprite('/assets/images/robot/player.png',
         {player: [0, 0, 72, 84]});
@@ -50,6 +58,9 @@ Crafty.scene('Loading', function(){
 
       Crafty.sprite('/assets/images/boss/boss1.png',
         {boss1: [0, 0, 365, 240]});
+
+      Crafty.sprite('/assets/images/line13.png',
+        {line13: [0, 0, 678, 72]});
 
       Crafty.sprite('/assets/images/bullet/bullet-2.png',
         {bullet2: [0, 0, 12, 36]});

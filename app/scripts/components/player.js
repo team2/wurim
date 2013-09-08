@@ -11,9 +11,13 @@
         hp: 30,
         x: WINDOW_WIDTH / 2 - 96 / 2,
         y: WINDOW_HEIGHT - 108,
+        w: 72,
+        h: 84,
         damage: 10,
         supplies: []
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 84], [72, 0], [72, 84]));
       this.origin("center");
       this.bind('EnterFrame', this.moving);
       this.bind('KeyDown', this.fire);
@@ -27,6 +31,7 @@
         this.setSpeed()
       });
       this.reset();
+      console.log(this.w)
     },
 
     moving: function () {
@@ -78,35 +83,51 @@
       } else if (
           (e.key === Crafty.keys.F || e.key == Crafty.keys.G) &&
           !this.under_setup) {
-        var cd = Crafty.e('BoomCountdown');
-        var self = this;
-        cd.setKey(e.key == Crafty.keys.F ? Crafty.keys.G : Crafty.keys.F);
-        cd.player = this;
-        cd.bind('Remove', function() {
-          self.under_setup= false
-        });
-        self.under_setup= true;
+        var supply = this.popSupply();
+        if(supply) {
+          var cd = Crafty.e('BoomCountdown');
+          var self = this;
+          cd.setKey(e.key == Crafty.keys.F ? Crafty.keys.G : Crafty.keys.F);
+          cd.player = this;
+          cd.supply = supply;
+          cd.bind('Remove', function() {
+            self.under_setup = false
+          });
+          self.under_setup = true;
+        }
       }
     },
 
-    hurt: function(damage) {
+    hurt: _.throttle(function(damage) {this._hurt(damage);}, 1000),
+
+    _hurt: function(damage) {
       this.hp -= damage;
-      Crafty.audio.play("hurt");
+        Crafty.audio.play("hurt");
       Crafty.trigger('HurtPlayer', this);
       if (this.hp <= 0) {
+        Crafty.audio.play("ah");
         Crafty.trigger('KillPlayer', this);
         return this.destroy();
       }
     },
 
-    useSupply: function() {
-      s = this.supplies.pop()
+    heal: function(value) {
+      var tmp_hp = this.hp + value;
+      this.hp = tmp_hp < Game.max_hp ? tmp_hp : Game.max_hp;
+      Crafty.trigger('HealPlayer', this);
+    },
+
+    useSupply: function(s) {
       if (s) {
-        console.log(s);
         s.doSupply(this);
-        s.destroy();
         Crafty.trigger('UseSupply', s);
       }
+    },
+
+    popSupply: function() {
+      s = this.supplies.pop();
+      s && s.destroy();
+      return s;
     },
 
     collectSupply: function(supply) {

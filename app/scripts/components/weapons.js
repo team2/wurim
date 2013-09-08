@@ -79,6 +79,8 @@ Crafty.c('PlayerBullet', {
       var enemy = event[0].obj;
       this.onHitEnemy(enemy);
     });
+    this.collision(
+      new Crafty.polygon([0, 0], [0, 36], [12, 0], [12, 36]));
   },
 
   onHitEnemy: function(enemy) {
@@ -141,6 +143,11 @@ Crafty.c('Boom', {
       Crafty('Enemy').each(function() {
         this.hurt(dmg);
       });
+      Crafty('Boss1Bullet').each(function() {
+        console.log('23234')
+        this.destroy();
+      });
+
       total_damage -= dmg;
       if(total_damage <= 0) {
         this.destroy();
