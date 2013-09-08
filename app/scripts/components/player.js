@@ -42,14 +42,18 @@
       } else if (
           (e.key === Crafty.keys.F || e.key == Crafty.keys.G) &&
           !this.under_setup) {
-        var cd = Crafty.e('BoomCountdown');
-        var self = this;
-        cd.setKey(e.key == Crafty.keys.F ? Crafty.keys.G : Crafty.keys.F);
-        cd.player = this;
-        cd.bind('Remove', function() {
-          self.under_setup= false
-        });
-        self.under_setup= true;
+        var supply = this.popSupply();
+        if(supply) {
+          var cd = Crafty.e('BoomCountdown');
+          var self = this;
+          cd.setKey(e.key == Crafty.keys.F ? Crafty.keys.G : Crafty.keys.F);
+          cd.player = this;
+          cd.supply = supply;
+          cd.bind('Remove', function() {
+            self.under_setup = false
+          });
+          self.under_setup = true;
+        }
       }
     },
 
@@ -69,13 +73,17 @@
       Crafty.trigger('HealPlayer', this);
     },
 
-    useSupply: function() {
-      s = this.supplies.pop()
+    useSupply: function(s) {
       if (s) {
         s.doSupply(this);
-        s.destroy();
         Crafty.trigger('UseSupply', s);
       }
+    },
+
+    popSupply: function() {
+      s = this.supplies.pop();
+      s && s.destroy();
+      return s;
     },
 
     collectSupply: function(supply) {

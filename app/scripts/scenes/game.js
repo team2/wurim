@@ -74,6 +74,7 @@ Crafty.scene('Game', function(){
       setTimeout(function() {
         effect.destroy()
       }, 500);
+      Crafty.audio.play('explode', 1, 0.5);
     }
   });
 });

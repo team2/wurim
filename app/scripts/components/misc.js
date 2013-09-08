@@ -20,7 +20,7 @@
     },
     keydown: function(e) {
       if(e.key == this.key) {
-        this.player.useSupply();
+        this.player.useSupply(this.supply);
         this.destroy();
       }
     },
