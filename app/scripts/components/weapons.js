@@ -130,6 +130,7 @@ Crafty.c('Extreme', {
 
 Crafty.c('Boom', {
   init: function() {
+    Crafty.audio.play('ex01');
     this.requires("Extreme, SpriteAnimation, spr_boom");
     this.attr({w: 576, h: 768, x: 0, y: 0});
     this.animate('Booom', 0, 0, 1);  // setup
