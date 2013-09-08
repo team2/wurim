@@ -45,13 +45,13 @@
       this.updateScore()
       this.bind("KillEnemy", function(u) {
         if (u.__c.Goblin) {
-          that.score += 32;
+          that.score += 32000;
         } else if (u.__c.Slime) {
-          that.score += 64;
+          that.score += 64000;
         } else if (u.__c.Orc) {
-          that.score += 128;
+          that.score += 128000;
         } else if (u.__c.Boss1) {
-          this.score += 1024;
+          this.score += 1024000;
         }
         that.updateScore();
       })
