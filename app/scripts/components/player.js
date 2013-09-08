@@ -31,7 +31,6 @@
         this.setSpeed()
       });
       this.reset();
-      console.log(this.w)
     },
 
     moving: function () {

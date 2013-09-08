@@ -45,13 +45,13 @@
       this.updateScore()
       this.bind("KillEnemy", function(u) {
         if (u.__c.Goblin) {
-          that.score += 32;
+          that.score += 32000;
         } else if (u.__c.Slime) {
-          that.score += 64;
+          that.score += 64000;
         } else if (u.__c.Orc) {
-          that.score += 128;
+          that.score += 128000;
         } else if (u.__c.Boss1) {
-          this.score += 1024;
+          this.score += 1024000;
         }
         that.updateScore();
       })
@@ -63,6 +63,15 @@
     },
     getScore: function () {
       return this.score
+    }
+  });
+
+  Crafty.c('Line13Warning', {
+    init: function() {
+      this.requires("2D, Canvas, SpriteAnimation, spr_line13_warning");
+      this.attr({ w: 12, h: 36, x: WINDOW_WIDTH - 15 });
+      this.animate('Line13Warning', 0, 0, 1);
+      this.animate('Line13Warning', 20, -1);
     }
   });
 }).call(this);

@@ -62,6 +62,9 @@ Crafty.scene('Loading', function(){
       Crafty.sprite('/assets/images/line13.png',
         {line13: [0, 0, 678, 72]});
 
+      Crafty.sprite(12, 36, '/assets/images/line13_warning.png',
+        {spr_line13_warning: [0, 0]});
+
       Crafty.sprite('/assets/images/bullet/bullet-2.png',
         {bullet2: [0, 0, 12, 36]});
 
