@@ -66,7 +66,7 @@
   Crafty.c('Line13Warning', {
     init: function() {
       this.requires("2D, Canvas, SpriteAnimation, spr_line13_warning");
-      this.attr({ w: 12, h: 36, x: WINDOW_WIDTH - 15 });
+      this.attr({ w: 36, h: 60, x: WINDOW_WIDTH - 39 });
       this.animate('Line13Warning', 0, 0, 1);
       this.animate('Line13Warning', 20, -1);
     }
