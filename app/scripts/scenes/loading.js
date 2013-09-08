@@ -23,6 +23,7 @@ Crafty.scene('Loading', function(){
     function(){
       Crafty.audio.add('biu', '/assets/sounds/biu.wav');
       Crafty.audio.add('tu', '/assets/sounds/tu.wav');
+      Crafty.audio.add('ding', '/assets/sounds/ding.mp3');
       Crafty.audio.add("bgm", '/assets/sounds/boss_background02.mp3');
       Crafty.audio.add("hurt", "/assets/sounds/se_invalid.wav");
       Crafty.audio.add("supply01", "/assets/sounds/supply01.mp3");
