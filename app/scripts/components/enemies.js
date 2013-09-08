@@ -126,7 +126,6 @@
     }
   });
 
-
   Crafty.c("Boss1", {
     init: function() {
       this.requires("Enemy, boss1");
@@ -175,6 +174,7 @@
   Crafty.c('Line13', {
     init: function() {
       this.requires('Enemy, line13');
+      Crafty.audio.play("ding");
       this.attr({
         hp: 100000000000,
         damage: 100000000000,
@@ -182,6 +182,8 @@
         w: 678,
         h: 72
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 72], [678, 0], [678, 72]));
     },
 
     beforeDestory: function() {

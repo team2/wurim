@@ -43,6 +43,9 @@ Crafty.scene('Game', function(){
 
   // Line 13
   setInterval(function() {
+    if(boss_time || Math.random() > 0.4){
+      return;
+    }
     var line13 = Crafty.e('Line13');
     line13.placeLine13(WINDOW_WIDTH + 700, player.y);
   }, LINE13_APPEAR_DELAY);
@@ -78,7 +81,7 @@ Crafty.scene('Game', function(){
       setTimeout(function() {
         effect.destroy()
       }, 500);
-      Crafty.audio.play('explode', 1, 0.5);
+      Crafty.audio.play('explode', 1, 0.2);
     }
   });
 });

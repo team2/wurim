@@ -2,7 +2,7 @@
   Crafty.c('BoomCountdown', {
     init: function() {
       this.requires("2D, Color, Canvas");
-      this.attr({x: 0, y: WINDOW_HEIGHT - 5, w: WINDOW_WIDTH, h: 5})
+      this.attr({x: 0, y: WINDOW_HEIGHT - 15, w: WINDOW_WIDTH, h: 15});
       this.percentage = 1.0;
       this.color('#66ccff');
       this.bind('EnterFrame', this.countdown);
@@ -34,12 +34,14 @@
         x: 220,
         y: 12,
         w: 160,
-        h: 5,
-        score: 0
+        h: 20,
+        score: -99999999
       });
       this.unselectable();
       this.textColor('white');
-      this.textFont({size: '30px'});
+      this.textFont("size", "30px");
+      // this.textFont("family", "8bit.ttf");
+      this.css("style", "font-family:8BIT WONDER");
       this.updateScore()
       this.bind("KillEnemy", function(u) {
         if (u.__c.Goblin) {

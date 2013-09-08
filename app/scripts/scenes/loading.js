@@ -17,11 +17,14 @@ Crafty.scene('Loading', function(){
     "/assets/sounds/boss_background01.ogg",
     "/assets/sounds/boss_background02.mp3",
     "/assets/sounds/game_over.ogg",
-    "/assets/sounds/supply01.mp3"],
+    "/assets/sounds/supply01.mp3",
+    "/assets/fonts/8bit.ttf"],
 
     function(){
+      Crafty.audio.add('ah', '/assets/sounds/ah.mp3');
       Crafty.audio.add('biu', '/assets/sounds/biu.wav');
       Crafty.audio.add('tu', '/assets/sounds/tu.wav');
+      Crafty.audio.add('ding', '/assets/sounds/ding.mp3');
       Crafty.audio.add("bgm", '/assets/sounds/boss_background02.mp3');
       Crafty.audio.add("hurt", "/assets/sounds/se_invalid.wav");
       Crafty.audio.add("supply01", "/assets/sounds/supply01.mp3");
