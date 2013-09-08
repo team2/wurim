@@ -6,7 +6,7 @@ Crafty.scene('Game', function(){
 
   Crafty.e("ScoreText");
 
-  Crafty.e('Player').fourway(8);
+  var player = Crafty.e('Player').fourway(8);
 
   Crafty.e('Health');
   Crafty.e('SupplyWidget');
@@ -28,26 +28,30 @@ Crafty.scene('Game', function(){
     } else if (Math.random() < 0.003) {
       u = Crafty.e("HPFallingSupply");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
-    } else if (Math.random() < 0.001) {
-      u = Crafty.e("Boss1");
-      u.place(Math.random() * (WINDOW_WIDTH - u.w));
     }
   };
 
-  Crafty.bind("EnterFrame",function(frame){
-    // Setup background position
-    Crafty.stage.elem.style.backgroundPosition = "0px " + frame.frame + "px";
-    return addCannonFodders.call(this);
-  });
-
+  // Boss
   setInterval(function(){
-    if(boss_time){
+    if (boss_time) {
       return;
     }
     boss_time = true;
     u = Crafty.e("Boss1");
     u.place(Math.random() * (WINDOW_WIDTH - u.w));
   }, BOSS_APPEAR_DELAY);
+
+  // Line 13
+  setInterval(function() {
+    var line13 = Crafty.e('Line13');
+    line13.placeLine13(WINDOW_WIDTH + 700, player.y);
+  }, LINE13_APPEAR_DELAY);
+
+  Crafty.bind("EnterFrame",function(frame){
+    // Setup background position
+    Crafty.stage.elem.style.backgroundPosition = "0px " + frame.frame + "px";
+    return addCannonFodders.call(this);
+  });
 
   Crafty.bind('KillEnemy', function(e){
     if(e.__c.Boss1){

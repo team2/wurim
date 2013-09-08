@@ -55,6 +55,9 @@ Crafty.scene('Loading', function(){
       Crafty.sprite('/assets/images/boss/boss1.png',
         {boss1: [0, 0, 365, 240]});
 
+      Crafty.sprite('/assets/images/line13.png',
+        {line13: [0, 0, 678, 72]});
+
       Crafty.sprite('/assets/images/bullet/bullet-2.png',
         {bullet2: [0, 0, 12, 36]});
 

@@ -191,4 +191,32 @@
     }
   });
 
+  Crafty.c('Line13', {
+    init: function() {
+      this.requires('Enemy, line13');
+      this.attr({
+        hp: 100000000000,
+        damage: 100000000000,
+        speed: 10,
+        w: 678,
+        h: 72
+      });
+    },
+
+    beforeDestory: function() {
+    },
+
+    placeLine13: function(x, y) {
+      this.x = x;
+      this.y = y;
+    },
+
+    moving: function() {
+      if (this.x + this.w < 0) {
+        this.destroy();
+      }
+      this.x -= this.speed;
+    }
+  });
+
 }).call(this);
