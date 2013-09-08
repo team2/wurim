@@ -4,7 +4,7 @@ Crafty.scene('Loading', function(){
     "/assets/images/robot/player.png",
     "/assets/images/welcome.png",
     "/assets/images/ex/ex.png",
-    "/assets/images/health/health.png",
+    "/assets/images/widgets/health.png",
     "/assets/sounds/alt_attack01.ogg",
     "/assets/sounds/alt_attack02.wav",
     "/assets/sounds/biu.wav", 
@@ -21,8 +21,11 @@ Crafty.scene('Loading', function(){
       Crafty.audio.add("bgm", '/assets/sounds/boss_background02.mp3');
       Crafty.audio.add("hurt", "/assets/sounds/se_invalid.wav");
 
-      Crafty.sprite('/assets/images/health/health.png',
+      Crafty.sprite('/assets/images/widgets/health.png',
         {health: [0, 0, 50, 50]});
+
+      Crafty.sprite('/assets/images/widgets/boom_supply.png',
+        {boom_supply: [0, 0, 50, 50]});
 
       Crafty.sprite('/assets/images/robot/player.png',
         {player: [0, 0, 96, 108]});

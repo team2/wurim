@@ -20,7 +20,7 @@
     },
     keydown: function(e) {
       if(e.key == this.key) {
-        Crafty.e('Boom');
+        this.player.useSupply();
         this.destroy();
       }
     },

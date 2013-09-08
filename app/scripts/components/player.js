@@ -6,7 +6,8 @@
         hp: 30,
         x: WINDOW_WIDTH / 2 - 20,
         y: WINDOW_HEIGHT - 20,
-        damage: 10
+        damage: 10,
+        supplies: []
       });
       this.origin("center");
       this.bind('Moved', this.stopOnBorder);
@@ -40,14 +41,15 @@
         bullet.fireAt(this.x + this.w - bullet.w, this.y);
       } else if (
           (e.key === Crafty.keys.F || e.key == Crafty.keys.G) &&
-          !this.in_boom) {
+          !this.under_setup) {
         var cd = Crafty.e('BoomCountdown');
         var self = this;
         cd.setKey(e.key == Crafty.keys.F ? Crafty.keys.G : Crafty.keys.F);
+        cd.player = this;
         cd.bind('Remove', function() {
-          self.in_boom = false
+          self.under_setup= false
         });
-        self.in_boom = true;
+        self.under_setup= true;
       }
     },
 
@@ -60,6 +62,26 @@
         return this.destroy();
       }
     },
+
+    useSupply: function() {
+      s = this.supplies.pop()
+      if (s) {
+        console.log(s);
+        s.doSupply(this);
+        s.destroy();
+        Crafty.trigger('UseSupply', s);
+      }
+    },
+
+    collectSupply: function(supply) {
+      if (this.supplies.length >= Game.max_supplies) {
+        dropedSupply = this.supplies.shift();
+        dropedSupply.destroy();
+        Crafty.trigger('DropSupply', dropedSupply);
+      }
+      this.supplies.push(supply);
+      Crafty.trigger('CollectSupply', supply);
+    }
   });
 
 }).call(this);

@@ -6,6 +6,7 @@ Crafty.scene('Game', function(){
   Crafty.e('Player').fourway(8);
 
   Crafty.e('Health');
+  Crafty.e('SupplyWidget');
 
   addCannonFodders = function() {
     var u;
@@ -17,6 +18,9 @@ Crafty.scene('Game', function(){
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
     } else if (Math.random() < 0.005) {
       u = Crafty.e("Orc");
+      u.place(Math.random() * (WINDOW_WIDTH - u.w));
+    } else if (Math.random() < 0.005) {
+      u = Crafty.e("BoomFallingSupply");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
     } else if (Math.random() < 0.001) {
       u = Crafty.e("Boss1");
