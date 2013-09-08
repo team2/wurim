@@ -42,9 +42,15 @@ Crafty.scene('Game', function(){
   }, BOSS_APPEAR_DELAY);
 
   // Line 13
-  setInterval(function() {
-    var line13 = Crafty.e('Line13');
-    line13.placeLine13(WINDOW_WIDTH + 700, player.y);
+  var line13IntervalId = setInterval(function() {
+    var y = player.y;
+    var line13Warning = Crafty.e('Line13Warning').attr({ y: y });
+    Crafty.audio.play("ding");
+    setTimeout(function() {
+      line13Warning.destroy()
+      var line13 = Crafty.e('Line13');
+      line13.placeLine13(WINDOW_WIDTH + 678, y);
+    }, 2000);
   }, LINE13_APPEAR_DELAY);
 
   Crafty.bind("EnterFrame",function(frame){
@@ -60,6 +66,7 @@ Crafty.scene('Game', function(){
   });
 
   Crafty.bind('KillPlayer', function(){
+    clearInterval(line13IntervalId);
     Crafty.scene('GameOver');
   });
 
