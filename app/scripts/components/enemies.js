@@ -124,7 +124,7 @@
     init: function() {
       this.requires("Enemy, boss1");
       this.attr({
-        hp: 250,
+        hp: 1000,
         x_speed: 1,
         y_speed: 1,
         w: 365,
