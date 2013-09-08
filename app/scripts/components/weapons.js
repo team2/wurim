@@ -83,9 +83,10 @@ Crafty.c('Extreme', {
 
 Crafty.c('Boom', {
   init: function() {
-    this.requires("Extreme, Color");
-    this.attr({w: 50, h: 50, x: 100, y: 100});
-    this.color('#cccccc');
+    this.requires("Extreme, SpriteAnimation, spr_boom");
+    this.attr({w: 576, h: 768, x: 0, y: 0});
+    this.animate('Booom', 0, 0, 1);  // setup
+    this.animate('Booom', 5, -1);
     var total_damage = 100;
     this.bind("EnterFrame", function() {
       var dmg = Math.min(2, total_damage);

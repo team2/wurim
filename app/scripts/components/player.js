@@ -21,9 +21,10 @@
       return this.y = this.y > WINDOW_HEIGHT - this.h ? WINDOW_HEIGHT - this.h : this.y;
     },
 
-    biu: _.throttle(function() {Crafty.audio.play("biu");}, 500),
-
-    tu: _.throttle(function() {Crafty.audio.play("tu");}, 500),
+    // biu: _.throttle(function() {Crafty.audio.play("biu");}, 1),
+    // tu: _.throttle(function() {Crafty.audio.play("tu");}, 1),
+    biu: function() {Crafty.audio.play("biu");},
+    tu: function() {Crafty.audio.play("tu");},
 
     fire: function(e) {
       var bullet;

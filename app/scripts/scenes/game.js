@@ -1,8 +1,7 @@
 Crafty.scene('Game', function(){
 
   Crafty.background("url(/assets/images/bg/bg-1.png)");
-  Crafty.audio.play("bgm",-1, 0.5);
-
+  Crafty.audio.play("bgm", -1, 0.5);
 
   Crafty.e('Player').fourway(8);
 
@@ -27,7 +26,7 @@ Crafty.scene('Game', function(){
 
   Crafty.bind("EnterFrame",function(frame){
       //Setup Background position
-    Crafty.stage.elem.style.backgroundPosition ="0px "+frame.frame+"px";
+    Crafty.stage.elem.style.backgroundPosition ="0px " + frame.frame + "px";
     return addCannonFodders.call(this);
   });
 

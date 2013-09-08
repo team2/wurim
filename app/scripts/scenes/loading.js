@@ -3,6 +3,7 @@ Crafty.scene('Loading', function(){
     "/assets/images/bg/bg-1.png",
     "/assets/images/robot/player.png",
     "/assets/images/welcome.png",
+    "/assets/images/ex/ex.png",
     "/assets/images/health/health.png",
     "/assets/sounds/alt_attack01.ogg",
     "/assets/sounds/alt_attack02.wav",
@@ -43,6 +44,9 @@ Crafty.scene('Loading', function(){
 
       Crafty.sprite('/assets/images/bullet/bullet-3.png',
         {bullet3: [0, 0, 12, 36]});
+
+      Crafty.sprite(576, 768, '/assets/images/ex/ex.png',
+        {spr_boom: [0, 0]});
 
       Crafty.e('2D, DOM, Image, Mouse, Keyboard')
         .attr({ w: Game.width, h: Game.height})
