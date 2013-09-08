@@ -35,7 +35,7 @@ Crafty.scene('Game', function(){
   };
 
   Crafty.bind("EnterFrame",function(frame){
-      //Setup Background position
+    // Setup background position
     Crafty.stage.elem.style.backgroundPosition = "0px " + frame.frame + "px";
     return addCannonFodders.call(this);
   });
@@ -60,13 +60,13 @@ Crafty.scene('Game', function(){
   });
 
   Crafty.bind('KeyDown', function(e){
-    if(e.key == Crafty.keys['P']){
+    if (e.key == Crafty.keys.P) {
       Crafty.pause();
     }
   });
 
   Crafty.bind('KillEnemy', function(e) {
-    if(e.explodeEffect) {
+    if (e.explodeEffect) {
       var effect = Crafty.e('2D, Canvas, ' + e.explodeEffect);
       effect.attr({
         x: e.x + e.w / 2 - effect.w / 2, y: e.y + e.h / 2 - effect.h / 2,

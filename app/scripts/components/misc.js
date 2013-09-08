@@ -60,4 +60,9 @@
       this.text(scoreStr);
     }
   });
+
+  Crafty.c('Line13', {
+    init: function() {
+    }
+  });
 }).call(this);
