@@ -9,10 +9,15 @@ Crafty.c('Health', {
     }
     this._health_cursor = this.default_health - 1;
     this.bind('HealPlayer', function(){
-      if(this._health_cursor == this.default_health - 1){
+      if(this._health_cursor == Game.max_hp / 10 - 1){
         return
       }
-      this.healths[this._health_cursor++].visible = true;
+      this._health_cursor++;
+      if(this.healths.length == this._health_cursor) {
+        this.healths.push(Crafty.e('Actor, health').at(this._padding + this._health_cursor * this._margin, this._padding));
+      } else {
+        this.healths[this._health_cursor].visible = true;
+      }
     });
     this.bind('HurtPlayer', function(){
       if(this._health_cursor == -1){

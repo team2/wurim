@@ -25,6 +25,12 @@ Crafty.scene('Game', function(){
     } else if (Math.random() < 0.003) {
       u = Crafty.e("BoomFallingSupply");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
+    } else if (Math.random() < 0.003) {
+      u = Crafty.e("HPFallingSupply");
+      u.place(Math.random() * (WINDOW_WIDTH - u.w));
+    } else if (Math.random() < 0.001) {
+      u = Crafty.e("Boss1");
+      u.place(Math.random() * (WINDOW_WIDTH - u.w));
     }
   };
 

@@ -63,10 +63,15 @@
       }
     },
 
+    heal: function(value) {
+      var tmp_hp = this.hp + value;
+      this.hp = tmp_hp < Game.max_hp ? tmp_hp : Game.max_hp;
+      Crafty.trigger('HealPlayer', this);
+    },
+
     useSupply: function() {
       s = this.supplies.pop()
       if (s) {
-        console.log(s);
         s.doSupply(this);
         s.destroy();
         Crafty.trigger('UseSupply', s);
