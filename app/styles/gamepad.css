@@ -44,7 +44,10 @@ body {
   line-height: 1em;
 }
 .button.oBtn {
-  line-height: 61px;
+  line-height: 13px;
+}
+.button.xBtn {
+  line-height: 0px;
 }
 .button {
   -webkit-user-select:none;

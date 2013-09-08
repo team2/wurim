@@ -19,19 +19,28 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div class="landing">
-            <h1 class="title">环五道口</h1>
-            <h2 class="sub-title">WU RIM</h2>
+<!--             <h1 class="title">环五道口</h1>
+            <h2 class="sub-title">WU RIM</h2> -->
             <div>
                 <div class="qr player-a" >
                     <img src="/images/player-a.png">
-                    <!-- 玩家 a 已连接！ -->
                 </div>
                 <div class="qr player-b">
                     <img src="/images/player-b.png">
                 </div>
             </div>
         </div>
-        <div id="cr-stage"></div>
+        <div id="cr-stage">
+            <div class="loading-bar">
+                <div class="start">开始游戏</div>
+                <div class="loading">
+                    （游戏大作）加载中
+                </div>
+            </div>
+            <div class="info-bar">
+            </div>
+
+        </div>
         <!-- build:js scripts/vendor.js -->
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
@@ -58,9 +67,5 @@
         <!-- endbuild -->
     </head>
     <body>
-        <!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div id="cr-stage"></div>
 </body>
 </html>

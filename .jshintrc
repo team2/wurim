@@ -21,6 +21,7 @@
   "smarttabs": true,
   "globals": {
     "$": false,
+    "_": false,
     "Crafty": false,
     "FastClick": false,
     "angular": false,

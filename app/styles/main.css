@@ -25,22 +25,39 @@ body {
     background-color: #000;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    background: url(/assets/images/bg.jpg) no-repeat black center center fixed;
+    background-size: cover
 }
 
 .landing {
-    padding: 50px;
+    padding: 292px 50px;
     width: 610px;
     margin: 0 auto;
 }
-
+.blink {
+    animation: blink 1s infinite;
+}
+@-webkit-keyframes blink {
+    0% {
+        color: #2B992B;
+    }
+    50% {
+        color:#30D530;
+    }
+    100% {
+        color: #2B992B;
+    }
+}
 .landing .qr {
     line-height: 300px;
     vertical-align: top;
     width: 300px;
     height: 300px;
     display: inline-block;
-    color: #060;
+    /*color: #0a0;*/
     text-align: center;
+    text-shadow: 0 0 4px #fff;
+    color: #2B992B;
 }
 .title {
     text-align: center;
@@ -52,4 +69,25 @@ body {
     color: #666;
     font-size: 30px;
 }
-
+.loading-bar {
+    line-height: 50px;
+    font-size: 35px;
+    width: 350px;
+    height: 50px;
+    bottom: 140px;
+    left: 50%;
+    margin-left: -175px;
+    position: absolute;
+    text-align: center;
+    background: url(/assets/images/start-hover.png);
+    background-size: 100%;
+}
+.loading-bar .start{
+    display: none;
+}
+.loading-bar div {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}

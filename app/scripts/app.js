@@ -6,6 +6,7 @@
   }
   app.ensureGame = function () {
     if (app.players.a && app.players.b) {
+      $('.landing').remove()
       Game.start()
     }
   }
@@ -15,7 +16,7 @@
     Crafty.trigger('tilt', e)
   })
   socket.on('player:ok', function (player) {
-    $('.player-' + player).html('玩家' + player + '已连接！' )
+    $('.player-' + player).html('玩家' + player + '已连接！' ).addClass('blink')
     app.players[player] = true
     app.ensureGame()
   });
@@ -38,6 +39,6 @@
   socket.on('key', function (e) {
     emit(e)
   })
-
+  // For test：
   // Game.start()
 })()

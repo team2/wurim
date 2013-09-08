@@ -14,7 +14,6 @@
         damage: 10
       });
       this.origin("center");
-      this.color("rgb(255, 0, 0)");
       this.bind('EnterFrame', this.moving);
       this.bind('KeyDown', this.fire);
       this.bind('tilt', function (data){
@@ -62,7 +61,7 @@
 
     tu: _.throttle(function() {Crafty.audio.play("tu");}, 500),
 
-    fire: function(e) {
+    fire: function (e) {
       var bullet;
       if (e.key === Crafty.keys.X) {
         // Player A
