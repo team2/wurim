@@ -2,7 +2,7 @@
   Crafty.c('BoomCountdown', {
     init: function() {
       this.requires("2D, Color, Canvas");
-      this.attr({x: 0, y: WINDOW_HEIGHT - 5, w: WINDOW_WIDTH, h: 5})
+      this.attr({x: 0, y: WINDOW_HEIGHT - 15, w: WINDOW_WIDTH, h: 15});
       this.percentage = 1.0;
       this.color('#66ccff');
       this.bind('EnterFrame', this.countdown);
