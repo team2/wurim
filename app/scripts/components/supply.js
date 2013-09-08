@@ -48,6 +48,8 @@ Crafty.c('BoomFallingSupply', {
     this.attr({
       supply: 'BoomSupply'
     });
+    this.collision(
+        new Crafty.polygon([10, 0], [10, 50], [50, 10], [50, 50]));
   }
 });
 
@@ -59,6 +61,8 @@ Crafty.c('HPFallingSupply', {
       supply: 'HPSupply',
       collectable: false
     });
+    this.collision(
+        new Crafty.polygon([10, 0], [10, 50], [50, 10], [50, 50]));
   }
 });
 

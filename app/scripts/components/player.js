@@ -6,13 +6,18 @@
         hp: 30,
         x: WINDOW_WIDTH / 2 - 96 / 2,
         y: WINDOW_HEIGHT - 108,
+        w: 72,
+        h: 84,
         damage: 10,
         supplies: []
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 84], [72, 0], [72, 84]));
       this.origin("center");
       this.bind('Moved', this.stopOnBorder);
       this.bind('KeyDown', this.fire);
       this.reset();
+      console.log(this.w)
     },
 
     stopOnBorder: function() {

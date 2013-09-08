@@ -47,6 +47,8 @@
         h: 30,
         explodeEffect: 'explodesmall'
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 30], [30, 0], [30, 30]));
       return this
     },
 
@@ -76,6 +78,8 @@
         h: 72,
         explodeEffect: 'explodelarge'
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 72], [48, 0], [48, 72]));
       return this
     },
 
@@ -106,6 +110,8 @@
         h: 50,
         explodeEffect: 'explodelarge',
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 50], [50, 0], [50, 50]));
       return this;
     },
 
@@ -129,6 +135,8 @@
           w: 1000,
           h: 40
         });
+        this.collision(
+          new Crafty.polygon([0, 0], [0, 40], [1000, 0], [1000, 40]));
     },
 
     beforeDestory: function() {},
@@ -149,6 +157,8 @@
         h: 240,
         explodeEffect: 'explodeboss'
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 240], [365, 0], [365, 240]));
       this.invervalId = setInterval(
         (function(self) {
           return function() {
@@ -178,6 +188,34 @@
         var bullet = Crafty.e('Boss1Bullet').attr({ angle: i });
         bullet.fireAt(this.x + this.w / 2, this.y + this.h);
       }
+    }
+  });
+
+  Crafty.c('Line13', {
+    init: function() {
+      this.requires('Enemy, line13');
+      this.attr({
+        hp: 100000000000,
+        damage: 100000000000,
+        speed: 10,
+        w: 678,
+        h: 72
+      });
+    },
+
+    beforeDestory: function() {
+    },
+
+    placeLine13: function(x, y) {
+      this.x = x;
+      this.y = y;
+    },
+
+    moving: function() {
+      if (this.x + this.w < 0) {
+        this.destroy();
+      }
+      this.x -= this.speed;
     }
   });
 

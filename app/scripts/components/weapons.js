@@ -79,6 +79,8 @@ Crafty.c('PlayerBullet', {
       var enemy = event[0].obj;
       this.onHitEnemy(enemy);
     });
+    this.collision(
+      new Crafty.polygon([0, 0], [0, 36], [12, 0], [12, 36]));
   },
 
   onHitEnemy: function(enemy) {
