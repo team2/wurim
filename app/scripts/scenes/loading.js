@@ -6,7 +6,8 @@ Crafty.scene('Loading', function(){
     "/assets/images/health/health.png",
     "/assets/sounds/alt_attack01.ogg",
     "/assets/sounds/alt_attack02.wav",
-    "/assets/sounds/biubiubiu.wav", 
+    "/assets/sounds/biu.wav", 
+    "/assets/sounds/tu.wav", 
     "/assets/sounds/boom.mp3",
     "/assets/sounds/boss_background01.ogg",
     "/assets/sounds/boss_background02.mp3",
@@ -14,8 +15,8 @@ Crafty.scene('Loading', function(){
     "/assets/sounds/supply.wav"], 
 
     function(){
-      Crafty.audio.add('biu', '/assets/sounds/g_biu.m4a');
-      Crafty.audio.add('tu', '/assets/sounds/g_tu.m4a');
+      Crafty.audio.add('biu', '/assets/sounds/biu.wav');
+      Crafty.audio.add('tu', '/assets/sounds/tu.wav');
 
       Crafty.sprite('/assets/images/robot/player.png',
         {player: [0, 0, 96, 108]});
