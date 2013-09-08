@@ -49,7 +49,7 @@ Crafty.c('BoomFallingSupply', {
       supply: 'BoomSupply'
     });
     this.collision(
-        new Crafty.polygon([0, 0], [0, 60], [60, 0], [60, 60]));
+        new Crafty.polygon([10, 0], [10, 50], [50, 10], [50, 50]));
   }
 });
 
@@ -62,7 +62,7 @@ Crafty.c('HPFallingSupply', {
       collectable: false
     });
     this.collision(
-        new Crafty.polygon([0, 0], [0, 60], [60, 0], [60, 60]));
+        new Crafty.polygon([10, 0], [10, 50], [50, 10], [50, 50]));
   }
 });
 
