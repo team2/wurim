@@ -141,6 +141,11 @@ Crafty.c('Boom', {
       Crafty('Enemy').each(function() {
         this.hurt(dmg);
       });
+      Crafty('Boss1Bullet').each(function() {
+        console.log('23234')
+        this.destroy();
+      });
+
       total_damage -= dmg;
       if(total_damage <= 0) {
         this.destroy();
