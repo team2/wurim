@@ -62,4 +62,13 @@
       this.text(scoreStr);
     }
   });
+
+  Crafty.c('Line13Warning', {
+    init: function() {
+      this.requires("2D, Canvas, SpriteAnimation, spr_line13_warning");
+      this.attr({ w: 12, h: 36, x: WINDOW_WIDTH - 15 });
+      this.animate('Line13Warning', 0, 0, 1);
+      this.animate('Line13Warning', 20, -1);
+    }
+  });
 }).call(this);

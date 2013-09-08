@@ -17,7 +17,6 @@
       this.bind('Moved', this.stopOnBorder);
       this.bind('KeyDown', this.fire);
       this.reset();
-      console.log(this.w)
     },
 
     stopOnBorder: function() {
