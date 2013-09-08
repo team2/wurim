@@ -64,11 +64,13 @@
 
     hurt: function(damage) {
       this.hp -= damage;
-      Crafty.audio.play("hurt");
       Crafty.trigger('HurtPlayer', this);
       if (this.hp <= 0) {
+        Crafty.audio.play("ah");
         Crafty.trigger('KillPlayer', this);
         return this.destroy();
+      } else {
+        Crafty.audio.play("hurt");
       }
     },
 

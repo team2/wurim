@@ -21,6 +21,7 @@ Crafty.scene('Loading', function(){
     "/assets/fonts/8bit.ttf"],
 
     function(){
+      Crafty.audio.add('ah', '/assets/sounds/ah.mp3');
       Crafty.audio.add('biu', '/assets/sounds/biu.wav');
       Crafty.audio.add('tu', '/assets/sounds/tu.wav');
       Crafty.audio.add('ding', '/assets/sounds/ding.mp3');
