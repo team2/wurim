@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "8bit";
+    src: "/assets/fonts/8bit.ttf";
+}
+
 body, html {
     margin: 0;
     padding: 0;

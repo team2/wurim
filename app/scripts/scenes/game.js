@@ -3,6 +3,8 @@ Crafty.scene('Game', function(){
   Crafty.background("url(/assets/images/bg/bg-1.png)");
   Crafty.audio.play("bgm", -1, 0.5);
 
+  Crafty.e("ScoreText");
+
   Crafty.e('Player').fourway(8);
 
   Crafty.e('Health');
