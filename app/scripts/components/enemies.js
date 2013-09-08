@@ -44,7 +44,8 @@
         hp: 10,
         speed: 3,
         w: 30,
-        h: 30
+        h: 30,
+        explodeEffect: 'explodesmall'
       });
       return this
     },
@@ -72,7 +73,8 @@
         hp: 30,
         speed: 2,
         w: 48,
-        h: 72
+        h: 72,
+        explodeEffect: 'explodelarge'
       });
       return this
     },
@@ -83,7 +85,7 @@
       }
       return this.y += this.speed;
     },
-    
+
     beforeDestory: function() {
       for (var i=-1; i<=1; i++) {
         var u = Crafty.e("Goblin");
@@ -101,14 +103,15 @@
         hp: 90,
         speed: 2,
         w: 50,
-        h: 50
+        h: 50,
+        explodeEffect: 'explodelarge',
       });
       return this;
     },
 
     beforeDestory: function() {
     },
-    
+
     moving: function() {
       if (this.y > WINDOW_HEIGHT) {
         this.destroy();
@@ -121,15 +124,22 @@
     init: function() {
       this.requires("Enemy, boss1");
       this.attr({
-        hp: 2500,
+        hp: 1000,
         x_speed: 1,
         y_speed: 1,
         w: 365,
-        h: 240
+        h: 240,
+        explodeEffect: 'explodeboss'
       });
+      setInterval(
+        (function(self) {
+          return function() {
+            self.fire();
+          }
+        })(this), 3000);
       return this;
     },
-    
+
     beforeDestory: function() {
     },
 
@@ -137,11 +147,18 @@
       if ((this.x < 0 && this.x_speed < 0) || (this.x >= WINDOW_WIDTH - this.w && this.x_speed > 0)) {
         this.x_speed = -this.x_speed;
       }
-      if ((this.y < 0 && this.y_speed < 0) || (this.y >= WINDOW_HEIGHT - this.h * 4 && this.y_speed > 0)) {
+      if ((this.y < 0 && this.y_speed < 0) || (this.y >= WINDOW_HEIGHT - this.h * 2.5 && this.y_speed > 0)) {
         this.y_speed = -this.y_speed;
       }
       this.x += this.x_speed;
       this.y += this.y_speed;
+    },
+
+    fire: function() {
+      for (var i = 210; i <= 330; i += 30) {
+        var bullet = Crafty.e('Boss1Bullet').attr({ angle: i });
+        bullet.fireAt(this.x + this.w / 2, this.y + this.h);
+      }
     }
   });
 

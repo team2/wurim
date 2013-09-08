@@ -9,9 +9,10 @@
       this.maxSpeed = 5
       this.attr({
         hp: 30,
-        x: WINDOW_WIDTH / 2 - 20,
-        y: WINDOW_HEIGHT - 20,
-        damage: 10
+        x: WINDOW_WIDTH / 2 - 96 / 2,
+        y: WINDOW_HEIGHT - 108,
+        damage: 10,
+        supplies: []
       });
       this.origin("center");
       this.bind('EnterFrame', this.moving);
@@ -57,9 +58,10 @@
       this._speed.x = this._speedA.x + this._speedB.x
       this._speed.y = this._speedA.y + this._speedB.y
     },
-    biu: _.throttle(function() {Crafty.audio.play("biu");}, 500),
-
-    tu: _.throttle(function() {Crafty.audio.play("tu");}, 500),
+    // biu: _.throttle(function() {Crafty.audio.play("biu");}, 1),
+    // tu: _.throttle(function() {Crafty.audio.play("tu");}, 1),
+    biu: function() {Crafty.audio.play("biu");},
+    tu: function() {Crafty.audio.play("tu");},
 
     fire: function (e) {
       var bullet;
@@ -75,14 +77,15 @@
         bullet.fireAt(this.x + this.w - bullet.w, this.y);
       } else if (
           (e.key === Crafty.keys.F || e.key == Crafty.keys.G) &&
-          !this.in_boom) {
+          !this.under_setup) {
         var cd = Crafty.e('BoomCountdown');
         var self = this;
         cd.setKey(e.key == Crafty.keys.F ? Crafty.keys.G : Crafty.keys.F);
+        cd.player = this;
         cd.bind('Remove', function() {
-          self.in_boom = false
+          self.under_setup= false
         });
-        self.in_boom = true;
+        self.under_setup= true;
       }
     },
 
@@ -95,6 +98,26 @@
         return this.destroy();
       }
     },
+
+    useSupply: function() {
+      s = this.supplies.pop()
+      if (s) {
+        console.log(s);
+        s.doSupply(this);
+        s.destroy();
+        Crafty.trigger('UseSupply', s);
+      }
+    },
+
+    collectSupply: function(supply) {
+      if (this.supplies.length >= Game.max_supplies) {
+        dropedSupply = this.supplies.shift();
+        dropedSupply.destroy();
+        Crafty.trigger('DropSupply', dropedSupply);
+      }
+      this.supplies.push(supply);
+      Crafty.trigger('CollectSupply', supply);
+    }
   });
 
 }).call(this);
