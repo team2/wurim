@@ -149,7 +149,7 @@
         h: 240,
         explodeEffect: 'explodeboss'
       });
-      setInterval(
+      this.invervalId = setInterval(
         (function(self) {
           return function() {
             self.fire();
@@ -159,6 +159,7 @@
     },
 
     beforeDestory: function() {
+      clearInterval(this.invervalId);
     },
 
     moving: function() {

@@ -3,4 +3,6 @@
 
   window.WINDOW_HEIGHT = 768;
 
+  window.BOSS_APPEAR_DELAY = 60000;
+
 }).call(this);
