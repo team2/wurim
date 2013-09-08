@@ -12,8 +12,8 @@ $(function () {
       socket.emit('key', { type: 'keydown', key: Crafty.keys.F })
       socket.emit('key', { type: 'keyup', key: Crafty.keys.F })
     } else {
-      socket.emit('key', { type: 'keydown', key: Crafty.keys.J })
-      socket.emit('key', { type: 'keyup', key: Crafty.keys.J })
+      socket.emit('key', { type: 'keydown', key: Crafty.keys.G })
+      socket.emit('key', { type: 'keyup', key: Crafty.keys.G })
     }
   })
   $('.oBtn').on('click', function () {

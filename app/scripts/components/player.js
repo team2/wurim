@@ -24,9 +24,9 @@
       this.bind('tilt', function (data){
         var co = 0.2
         if (data.isA) {
-          this._speedA = {x: data.tiltLR * co , y: data.tiltFB * co}
+          this._speedA = {y: -data.tiltLR * co , x: data.tiltFB * co}
         } else {
-          this._speedB = {x: data.tiltLR * co, y: data.tiltFB * co}
+          this._speedB = {y: -data.tiltLR * co, x: data.tiltFB * co}
         }
         this.setSpeed()
       });
