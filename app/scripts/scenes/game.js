@@ -25,11 +25,17 @@ Crafty.scene('Game', function(){
     } else if (Math.random() < 0.003) {
       u = Crafty.e("BoomFallingSupply");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
+    } else if (Math.random() < 0.003) {
+      u = Crafty.e("HPFallingSupply");
+      u.place(Math.random() * (WINDOW_WIDTH - u.w));
+    } else if (Math.random() < 0.001) {
+      u = Crafty.e("Boss1");
+      u.place(Math.random() * (WINDOW_WIDTH - u.w));
     }
   };
 
   Crafty.bind("EnterFrame",function(frame){
-      //Setup Background position
+    // Setup background position
     Crafty.stage.elem.style.backgroundPosition = "0px " + frame.frame + "px";
     return addCannonFodders.call(this);
   });
@@ -54,13 +60,13 @@ Crafty.scene('Game', function(){
   });
 
   Crafty.bind('KeyDown', function(e){
-    if(e.key == Crafty.keys['P']){
+    if (e.key == Crafty.keys.P) {
       Crafty.pause();
     }
   });
 
   Crafty.bind('KillEnemy', function(e) {
-    if(e.explodeEffect) {
+    if (e.explodeEffect) {
       var effect = Crafty.e('2D, Canvas, ' + e.explodeEffect);
       effect.attr({
         x: e.x + e.w / 2 - effect.w / 2, y: e.y + e.h / 2 - effect.h / 2,
@@ -68,6 +74,7 @@ Crafty.scene('Game', function(){
       setTimeout(function() {
         effect.destroy()
       }, 500);
+      Crafty.audio.play('explode', 1, 0.5);
     }
   });
 });

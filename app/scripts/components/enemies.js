@@ -159,7 +159,7 @@
       });
       this.collision(
         new Crafty.polygon([0, 0], [0, 240], [365, 0], [365, 240]));
-      setInterval(
+      this.invervalId = setInterval(
         (function(self) {
           return function() {
             self.fire();
@@ -169,6 +169,7 @@
     },
 
     beforeDestory: function() {
+      clearInterval(this.invervalId);
     },
 
     moving: function() {

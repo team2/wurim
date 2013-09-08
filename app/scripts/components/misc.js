@@ -20,7 +20,7 @@
     },
     keydown: function(e) {
       if(e.key == this.key) {
-        this.player.useSupply();
+        this.player.useSupply(this.supply);
         this.destroy();
       }
     },
@@ -58,6 +58,11 @@
       scoreStr = "" + this.score;
       scoreStr = new Array(8 - scoreStr.length + 1).join("0") + scoreStr;
       this.text(scoreStr);
+    }
+  });
+
+  Crafty.c('Line13', {
+    init: function() {
     }
   });
 }).call(this);

@@ -2,10 +2,11 @@ Crafty.c('FallingSupply', {
   init: function() {
     this.requires('2D, Canvas, Collision');
     this.attr({
-      w: 0,
-      h: 0,
-      speed: 2,
-      supply: null
+      w: 60,
+      h: 60,
+      speed: 9,
+      supply: null,
+      collectable: true
     });
     this.bind("EnterFrame", this.moving);
     this.onHit('Player', function(event) {
@@ -15,7 +16,12 @@ Crafty.c('FallingSupply', {
   },
 
   onHitPlayer: function(player) {
-    player.collectSupply(Crafty.e(this.supply));
+    var s = Crafty.e(this.supply);
+    if(this.collectable) {
+      player.collectSupply(s);
+    } else {
+      s.doSupply(player);
+    }
     Crafty.audio.play('supply01')
     this.destroy();
   },
@@ -40,9 +46,6 @@ Crafty.c('BoomFallingSupply', {
   init: function() {
     this.requires('FallingSupply, boom_falling_supply');
     this.attr({
-      w: 60,
-      h: 60,
-      speed: 9,
       supply: 'BoomSupply'
     });
     this.collision(
@@ -51,8 +54,20 @@ Crafty.c('BoomFallingSupply', {
 });
 
 
+Crafty.c('HPFallingSupply', {
+  init: function() {
+    this.requires('FallingSupply, hp_falling_supply');
+    this.attr({
+      supply: 'HPSupply',
+      collectable: false
+    });
+    this.collision(
+        new Crafty.polygon([0, 0], [0, 60], [60, 0], [60, 60]));
+  }
+});
+
+
 Crafty.c('Supply', {
-  widgetSprite: null,
   init: function() {
     this.requires('Actor');
   },
@@ -65,5 +80,17 @@ Crafty.c('BoomSupply', {
   },
   doSupply: function(player) {
     Crafty.e('Boom');
+  }
+});
+
+
+Crafty.c('HPSupply', {
+  init: function() {
+    this.attr({
+      hp: 10 
+    });
+  },
+  doSupply: function(player) {
+    player.heal(this.hp);
   }
 });
