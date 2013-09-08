@@ -143,7 +143,7 @@
       if ((this.x < 0 && this.x_speed < 0) || (this.x >= WINDOW_WIDTH - this.w && this.x_speed > 0)) {
         this.x_speed = -this.x_speed;
       }
-      if ((this.y < 0 && this.y_speed < 0) || (this.y >= WINDOW_HEIGHT - this.h * 2 && this.y_speed > 0)) {
+      if ((this.y < 0 && this.y_speed < 0) || (this.y >= WINDOW_HEIGHT - this.h * 2.5 && this.y_speed > 0)) {
         this.y_speed = -this.y_speed;
       }
       this.x += this.x_speed;
@@ -151,7 +151,7 @@
     },
 
     fire: function() {
-      for (var i = 220; i < 320; i += 20) {
+      for (var i = 210; i <= 330; i += 30) {
         var bullet = Crafty.e('Boss1Bullet').attr({ angle: i });
         bullet.fireAt(this.x + this.w / 2, this.y + this.h);
       }

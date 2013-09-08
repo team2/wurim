@@ -33,7 +33,7 @@ Crafty.scene('Loading', function(){
         {boom_falling_supply: [0, 0, 60, 60]});
 
       Crafty.sprite('/assets/images/robot/player.png',
-        {player: [0, 0, 96, 108]});
+        {player: [0, 0, 72, 84]});
 
       Crafty.sprite('/assets/images/monster/monster-2.png',
         {monster1: [0, 0, 48, 72]});
