@@ -5,6 +5,9 @@ Crafty.scene('Loading', function(){
     "/assets/images/welcome.png",
     "/assets/images/ex/ex.png",
     "/assets/images/widgets/health.png",
+    "/assets/images/explode/explode-small.png",
+    "/assets/images/explode/explode-large.png",
+    "/assets/images/explode/explode-3.png",
     "/assets/sounds/alt_attack01.ogg",
     "/assets/sounds/alt_attack02.wav",
     "/assets/sounds/biu.wav",
@@ -55,6 +58,15 @@ Crafty.scene('Loading', function(){
 
       Crafty.sprite('/assets/images/bullet/bullet-4.png',
         {bullet4: [0, 0, 24, 24]});
+
+      Crafty.sprite('/assets/images/explode/explode-large.png',
+        {explodelarge: [0, 0, 120, 108]});
+
+      Crafty.sprite('/assets/images/explode/explode-small.png',
+        {explodesmall: [0, 0, 60, 60]});
+
+      Crafty.sprite('/assets/images/explode/explode-3.png',
+        {explodeboss: [0, 0, 180, 168]});
 
       Crafty.sprite(576, 768, '/assets/images/ex/ex.png',
         {spr_boom: [0, 0]});

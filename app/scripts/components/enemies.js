@@ -44,7 +44,8 @@
         hp: 10,
         speed: 3,
         w: 30,
-        h: 30
+        h: 30,
+        explodeEffect: 'explodesmall'
       });
       return this
     },
@@ -72,7 +73,8 @@
         hp: 30,
         speed: 2,
         w: 48,
-        h: 72
+        h: 72,
+        explodeEffect: 'explodelarge'
       });
       return this
     },
@@ -101,7 +103,8 @@
         hp: 90,
         speed: 2,
         w: 50,
-        h: 50
+        h: 50,
+        explodeEffect: 'explodelarge',
       });
       return this;
     },
@@ -121,11 +124,12 @@
     init: function() {
       this.requires("Enemy, boss1");
       this.attr({
-        hp: 2500,
+        hp: 250,
         x_speed: 1,
         y_speed: 1,
         w: 365,
-        h: 240
+        h: 240,
+        explodeEffect: 'explodeboss'
       });
       setInterval(
         (function(self) {
