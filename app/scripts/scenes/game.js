@@ -19,7 +19,7 @@ Crafty.scene('Game', function(){
     } else if (Math.random() < 0.005) {
       u = Crafty.e("Orc");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
-    } else if (Math.random() < 0.005) {
+    } else if (Math.random() < 0.003) {
       u = Crafty.e("BoomFallingSupply");
       u.place(Math.random() * (WINDOW_WIDTH - u.w));
     } else if (Math.random() < 0.001) {

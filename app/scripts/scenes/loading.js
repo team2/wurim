@@ -27,6 +27,9 @@ Crafty.scene('Loading', function(){
       Crafty.sprite('/assets/images/widgets/boom_supply.png',
         {boom_supply: [0, 0, 50, 50]});
 
+      Crafty.sprite('/assets/images/supplies/boom_falling_supply.png',
+        {boom_falling_supply: [0, 0, 60, 60]});
+
       Crafty.sprite('/assets/images/robot/player.png',
         {player: [0, 0, 96, 108]});
 

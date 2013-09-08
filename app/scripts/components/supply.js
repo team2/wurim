@@ -37,14 +37,13 @@ Crafty.c('FallingSupply', {
 
 Crafty.c('BoomFallingSupply', {
   init: function() {
-    this.requires('FallingSupply, Color');
+    this.requires('FallingSupply, boom_falling_supply');
     this.attr({
-      w: 50,
-      h: 50,
-      speed: 2,
+      w: 60,
+      h: 60,
+      speed: 9,
       supply: 'BoomSupply'
     });
-    this.color('#E4C93E');
   }
 });
 
