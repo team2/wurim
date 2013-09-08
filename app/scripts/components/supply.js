@@ -16,6 +16,7 @@ Crafty.c('FallingSupply', {
 
   onHitPlayer: function(player) {
     player.collectSupply(Crafty.e(this.supply));
+    Crafty.audio.play('supply01')
     this.destroy();
   },
 

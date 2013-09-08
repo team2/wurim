@@ -38,10 +38,23 @@ Crafty.scene('Game', function(){
 
   this.bind('KillPlayer', function(){
     Crafty.scene('GameOver');
-  })
+  });
+
   Crafty.bind('KeyDown', function(e){
     if(e.key == Crafty.keys['P']){
       Crafty.pause();
     }
-  })
+  });
+
+  Crafty.bind('KillEnemy', function(e) {
+    if(e.explodeEffect) {
+      var effect = Crafty.e('2D, Canvas, ' + e.explodeEffect);
+      effect.attr({
+        x: e.x + e.w / 2 - effect.w / 2, y: e.y + e.h / 2 - effect.h / 2,
+      })
+      setTimeout(function() {
+        effect.destroy()
+      }, 500);
+    }
+  });
 });

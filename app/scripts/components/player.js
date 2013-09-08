@@ -4,8 +4,8 @@
       this.requires("2D, Canvas, player, Fourway, SpriteAnimation, Collision");
       this.attr({
         hp: 30,
-        x: WINDOW_WIDTH / 2 - 20,
-        y: WINDOW_HEIGHT - 20,
+        x: WINDOW_WIDTH / 2 - 96 / 2,
+        y: WINDOW_HEIGHT - 108,
         damage: 10,
         supplies: []
       });
