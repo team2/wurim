@@ -45,6 +45,8 @@ Crafty.c('BoomFallingSupply', {
       speed: 9,
       supply: 'BoomSupply'
     });
+    this.collision(
+        new Crafty.polygon([0, 0], [0, 60], [60, 0], [60, 60]));
   }
 });
 

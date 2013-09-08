@@ -47,6 +47,8 @@
         h: 30,
         explodeEffect: 'explodesmall'
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 30], [30, 0], [30, 30]));
       return this
     },
 
@@ -76,6 +78,8 @@
         h: 72,
         explodeEffect: 'explodelarge'
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 72], [48, 0], [48, 72]));
       return this
     },
 
@@ -106,6 +110,8 @@
         h: 50,
         explodeEffect: 'explodelarge',
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 50], [50, 0], [50, 50]));
       return this;
     },
 
@@ -129,6 +135,8 @@
           w: 1000,
           h: 40
         });
+        this.collision(
+          new Crafty.polygon([0, 0], [0, 40], [1000, 0], [1000, 40]));
     },
 
     beforeDestory: function() {},
@@ -149,6 +157,8 @@
         h: 240,
         explodeEffect: 'explodeboss'
       });
+      this.collision(
+        new Crafty.polygon([0, 0], [0, 240], [365, 0], [365, 240]));
       setInterval(
         (function(self) {
           return function() {
