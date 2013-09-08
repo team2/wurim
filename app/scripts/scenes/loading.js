@@ -51,6 +51,9 @@ Crafty.scene('Loading', function(){
       Crafty.sprite('/assets/images/bullet/bullet-3.png',
         {bullet3: [0, 0, 12, 36]});
 
+      Crafty.sprite('/assets/images/bullet/bullet-4.png',
+        {bullet4: [0, 0, 24, 24]});
+
       Crafty.sprite(576, 768, '/assets/images/ex/ex.png',
         {spr_boom: [0, 0]});
 
