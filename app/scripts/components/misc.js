@@ -60,9 +60,10 @@
       scoreStr = "" + this.score;
       scoreStr = new Array(8 - scoreStr.length + 1).join("0") + scoreStr;
       this.text(scoreStr);
+      window.curScore = this.score
     },
     getScore: function () {
-      return this.score
+      return window.curScore
     }
   });
 

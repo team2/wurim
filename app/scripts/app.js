@@ -40,7 +40,7 @@
     emit(e)
   })
   $('.save-score').click(function () {
-    api.addGameScore(score.getScore(), $('.aname').val(), $('.bname').val(), function (err, ret) {
+    api.addGameScore(curScore, $('.aname').val(), $('.bname').val(), function (err, ret) {
       $('#myModal').modal('hide')
     })
   })
