@@ -6,7 +6,9 @@
         <title>wurim gamepad</title>
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/gamepad.min.css -->
         <link rel="stylesheet" href="styles/gamepad.css">
+        <!-- endbuild -->
     </head>
     <body>
         <div class="block blockA">
@@ -15,10 +17,12 @@
         <div class="block blockB">
             <a class="button oBtn">O</a>
         </div>
+        <!-- build:js scripts/gamepad.min.js -->
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="scripts/vendor/socket.io.min.js"></script>
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <script src="scripts/vendor/crafty.js"></script>
         <script src="scripts/gamepad.js"></script>
+        <!-- endbuild -->
 </body>
 </html>
