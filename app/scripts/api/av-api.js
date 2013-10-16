@@ -1,5 +1,5 @@
 (function(global) {
-    AV.initialize("sn2gm4yegzgd2rdbew8t5a6egvi7z4c94xi857952q23ty08", "sujpugku5trg2ikg0ms71ve6oe4t35h0fpj0qlj9269xb74r");
+    AV.initialize("54m07k0qjf66t4wdcnsgpcm20zmm2i4wg5n9e6j0hw4krmwy", "8oxlwuuwgrf9pq7iyuv6ncitm53hfxkprtn6cnh43l38gszg");
 
     var GameScore = AV.Object.extend("GameScore");
 

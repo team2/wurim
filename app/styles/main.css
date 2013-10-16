@@ -54,6 +54,7 @@ body {
     }
 }
 .landing .qr {
+    opacity: 0.7;
     line-height: 300px;
     vertical-align: top;
     width: 300px;

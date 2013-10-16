@@ -11,7 +11,7 @@
     }
   }
 
-  var socket = io.connect('http://wurim.thbattle.net:9001');
+  var socket = io.connect(location.protocol + '//' + location.host + ':9001/')
   socket.on('tilt', function (e) {
     Crafty.trigger('tilt', e)
   })
@@ -44,5 +44,4 @@
       $('#myModal').modal('hide')
     })
   })
-  Game.start()
 })()
