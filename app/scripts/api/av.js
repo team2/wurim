@@ -11,7 +11,7 @@
  * Copyright 2009-2012 Jeremy Ashkenas, DocumentCloud Inc.
  * Released under the MIT license.
  */
-(function(root) {
+;(function(root) {
   root.AV = root.AV || {};
   root.AV.VERSION = "js0.2.1";
 }(this));
