@@ -1,4 +1,4 @@
-(function () {
+;(function () {
   window.app = window.app || {}
   app.players = {
     a: false,
