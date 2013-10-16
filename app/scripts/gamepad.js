@@ -1,7 +1,7 @@
 $(function () {
   var isA = (location.hash.slice(1) === 'a')
   FastClick.attach(document.body)
-  var socket = io.connect('http://wurim.thbattle.net:9001');
+  var socket = io.connect(location.protocol + '//' + location.host + ':9001/')
   socket.on('connect', function () {
     socket.emit('player:ok', location.hash.slice(1))
   })
