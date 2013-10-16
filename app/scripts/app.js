@@ -44,4 +44,5 @@
       $('#myModal').modal('hide')
     })
   })
+  Game.start()
 })()
